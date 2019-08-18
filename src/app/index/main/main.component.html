@@ -82,6 +82,24 @@
 		</div>
 		</article>
 	<!-- Sidebar end=============================================== -->
+
+
+	<div *ngFor="let articulo of articulos" class="col-sm-4">
+			<!--img src="{{articulo.imagenes[0]}}" class="card-img-top" alt="..."-->
+			<div class="card">
+			  <div class="card-body">
+				<h5 class="card-title">{{articulo?.nombre}}</h5>
+				<p class="card-text">
+						{{articulo?.descrip}}
+					</p>
+				<p class="card-text">
+						{{articulo?.precio}}
+				</p>
+			  </div>
+			</div>
+	</div>
+	<button class="btn btn-primary" (click)="probar()">probar</button>
+
 		<article>
 			<div id="mascotas_index" class="span9">		
 				<div class=" well-small" id="carrusel">
@@ -97,7 +115,7 @@
 						<a  ><img src="https://github.com/AngelJumbo/DAW_BuyAndHelp/blob/master/bootstrap-shop/themes/images/products/b1.jpg?raw=true" alt=""></a>
 						<div class="caption">
 						  <h5>Product name</h5>
-						  <h4><a class="btn"  >VIEW</a> <span class="pull-right">$222.00</span>  </h4>
+						  <h4><a class="btn"  >Mayra</a> <span class="pull-right">$222.00</span>  </h4>
 						</div>
 					  </div>
 					</li>

@@ -1,63 +1,77 @@
-﻿<header>
-<div id="header">
-<nav>
-<div id="logoArea" class="navbar">
+﻿
+<nav class="navbar navbar-expand-lg navbar-dark cabecera">
+	<a class="navbar-brand" routerLink="/"><img src="https://github.com/AngelJumbo/DAW_BuyAndHelp/blob/master/bootstrap-shop/administrador/resources/logo/logo_index.png?raw=true"  height="50" /></a>
 
-  <div class="navbar-inner">
-    <a class="brand" routerLink="/"><img src="https://github.com/AngelJumbo/DAW_BuyAndHelp/blob/master/bootstrap-shop/administrador/resources/logo/logo_index.png?raw=true" alt="Bootsshop" width="100" height="100" /></a>
-		<form id= "navegador" class="form-inline navbar-search" method="post" action="products.html" >
-		<input id="srchFld" class="srch" type="text" />
-		  <select class="srch" >
-			<option>TODO</option>
-			<option>ROPA </option>
-			<option>ALIMENTOS </option>
-			<option>SALUD Y BELLEZA</option>
-			<option>DEPORTES Y OCIO</option>
-			<option>LIBROS Y ENTRETENIMIENTO</option>
-		</select> 
-		  <button type="submit" class="srch" >Buscar</button>
-    </form>
-    <ul id="topMenu" class="nav pull-right">
-        <li class=""><a routerLink="/">Principal</a></li>	
-    <li class=""><a routerLink="/adopta">Adopta</a></li>
-    <li class=""><a routerLink="/products">Vender</a></li>
-    <li class=""><a routerLink="/about">Nosotros</a></li>
-    <li class=""><a routerLink="/contact">Contacto</a></li>
-	 
-	 <li class="">
-	 <a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Iniciar Sesión</span></a>
-	 
-	 
-	<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
-		  <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3>Inicio de sesión</h3>
-		  </div>
-		  <div class="modal-body">
-			<form class="form-horizontal loginFrm">
-			  <div class="control-group">								
-				<input type="text" id="inputEmail" placeholder="Email">
-			  </div>
-			  <div class="control-group">
-				<input type="password" id="inputPassword" placeholder="Password">
-			  </div>
-			  <div class="control-group">
-				<label class="checkbox">
-				<input type="checkbox"> Remember me
-				</label>
-			  </div>
-			</form>		
-			<button class="btn btn-success" type="submit" onclick="window.location='index.html'">Iniciar Sesión</button>
-			
-			<button class="btn btn-success" type="submit" onclick="window.location='login.html'">Registrarte</button>
-		  </div>
+	<button #navbarToggler class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" (click)="isShown = !isShown" [attr.aria-expanded]="isShown"  aria-label="Toggle navigation">
+    	<span class="navbar-toggler-icon"></span>
+	  </button>
+	  
+	<div class="collapse navbar-collapse" [ngClass]="{ 'show': isShown }" id="navbarSupportedContent">		
+		<form class="form-inline">
+			<div class="md-form my-0">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+			</div>
+		</form>
+		
+
+		<li class="nav-item dropdown">
+
+			<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false">Categorias</a>
+			<div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+
+				<a *ngFor="let categoria of categorias" class="dropdown-item">{{categoria.nombre}}</a>				
+			</div> 
+		</li>
+		
+		
+		
+
+		<ul class="navbar-nav mr-auto">
+
+
+			<li class="nav-item active"><a routerLink="/" (click)="probar()">Principal</a></li>	
+			<li class="nav-item active"><a routerLink="/adopta">Adopta</a></li>
+			<li class="nav-item active"><a routerLink="/products">Vender</a></li>
+			<li class="nav-item active"><a routerLink="/about">Nosotros</a></li>
+			<li class="nav-item active"><a routerLink="/contact">Contacto</a></li>
+				
+				
+		</ul>
+		<ul class="navbar-nav ml-auto">		
+			<li class="float-right">
+			<a href="#login" role="button" data-toggle="modal" ><span >Iniciar Sesión</span></a>
+						
+						
+						<!--div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								<h3>Inicio de sesión</h3>
+							</div>
+							<div class="modal-body">
+								<form class="form-horizontal loginFrm">
+								<div class="control-group">								
+									<input type="text" id="inputEmail" placeholder="Email">
+								</div>
+								<div class="control-group">
+									<input type="password" id="inputPassword" placeholder="Password">
+								</div>
+								<div class="control-group">
+									<label class="checkbox">
+									<input type="checkbox"> Remember me
+									</label>
+								</div>
+								</form>		
+								<button class="btn btn-success" type="submit" onclick="window.location='index.html'">Iniciar Sesión</button>
+								
+								<button class="btn btn-success" type="submit" onclick="window.location='login.html'">Registrarte</button>
+							</div>
+						</div-->
+					
+					
+			</li>
+		</ul>
+		
+
 	</div>
-	
-	
-	</li>
-    </ul>
-  </div>
-</div>
 </nav>
-</div>
-</header>

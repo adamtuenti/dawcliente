@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
+import { ArticuloService } from './providers/articulo/articulo.service';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -27,6 +29,8 @@ import { UsuariosFechaComponent } from './secundarias/usuarios-fecha/usuarios-fe
 import { VentasPordiaComponent } from './secundarias/ventas-pordia/ventas-pordia.component';
 import { SignComponent } from './secundarias/sign/sign.component';
 import { AdoptaComponent } from './secundarias/adopta/adopta.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 const rutas: Routes = [
  { path: '', component: MainComponent },
@@ -53,7 +57,8 @@ const rutas: Routes = [
 ];
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(rutas) ],
+  providers:    [ ArticuloService ],
+  imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(rutas),HttpClientModule ],
   declarations: [ AppComponent, HeaderComponent, FooterComponent, MainComponent, ProductsComponent, AboutComponent, LoginComponent, ContactComponent, AdminComponent, AdminUserComponent, GestionComponent, ReportesComponent, PanelControlComponent, MascotaspublicadasComponent, HistorialSolicitudesComponent, ListaMascotasComponent, ListaProductosComponent, ListaVentasComponent, ProductosCategoriaComponent, SolicitudesVentaComponent, UsuariosFechaComponent, VentasPordiaComponent, SignComponent, AdoptaComponent ],
   bootstrap:    [ AppComponent ]
 })
