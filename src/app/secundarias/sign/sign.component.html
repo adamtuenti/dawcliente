@@ -1,51 +1,59 @@
-<div id="signId">
-	<div class="container">
+<form name="myForm" class="text-center border border-light p-5" #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
 
-
-	<div class="span9">
-   
-	<h2 >Registro</h2>	
-	<hr class="soft"/>
-	
-	<div style="align-content: center">
-		<div >
-			<div ><!-- !!!!!!!!!!!!!!!!!!!!!!-->
-				<h3 >Crea tu cuenta</h3>
-				
-				
-				  <div class="control-group">
-					
-					<label class="control-label" for="Nombre">Nombre: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input class="span3"  type="text" id="Nombre">
-					</label>
-					
-					<label class="control-label" for="apellido">Apellido: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input class="span3"  type="text" id="apellido" >
-					</label>
-					
-					<label class="control-label" for="inputEmail0">Correo: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input class="span3"  type="text" id="inputEmail0" >
-					</label>
-					
-					<label class="control-label" for="Clave">Clave: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input class="span3"  type="password" id="Clave" >
-					</label>
-					
-					<label class="control-label" for="Clave">Dirección:  &nbsp;&nbsp;&nbsp;&nbsp;
-						<input class="span3"  type="password" id="direccion" >
-					</label>	
-				  </div>
-				  <div class="controls">
-				  <button class="btn btn-success " type="submit" routerLink="/">Crear cuenta</button>
-				  </div>
-			
-			</div>
+		<p class="h4 mb-4">Registro</p>
+  
+		<div class="form-row mb-4">
+		  <div class="col">
+			<!-- First name -->
+			<input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Nombres" name="nombres" ngModel="nombre" ng-required="myVar" >
+		  </div>
+		  <div class="col">
+			<!-- Last name -->
+			<input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Apellidos" name="apellidos" ngModel>
+		  </div>
 		</div>
 		
-	</div>	
-	
-	
-</div>
+  
+		<input type="email" id="cedulaUsuario" class="form-control mb-4" placeholder="Cedula" name="cedula" required>
 
-</div>
-</div>
+		<input type="email" id="direccionUsuario" class="form-control mb-4" placeholder="Direccion" name="direccion" ngModel>
+
+		<!-- E-mail -->
+		<input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="Correo" name="email" ngModel> 
+  
+		<!-- Password -->
+		<input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" name="contrasenia" ngModel>
+		<small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+		  At least 8 characters and 1 digit
+		</small>
+  
+		<!-- Phone number -->
+		
+
+
+		<select class="browser-default custom-select mb-4" name="rol" ngModel>
+				<option value="" disabled>Seleccione rol</option>
+				
+				<option value="1">Comprador</option>
+				<option value="2">Vendedor</option>
+			  </select>
+  
+		<!-- Newsletter -->
+		
+  
+		<!-- Sign up button -->
+		<div>
+				<button routerLink="/admin" class="btn btn-success btn block" block="true" type="submit" ng-model="myVar">Registro</button>
+		</div>
+		<!-- Social register -->
+		
+  
+		<hr>
+  
+		<!-- Terms of service -->
+		<p>Bienvenido a Buy & Help
+		  <a routerLink="/about" target="_blank">Acerca de nosotros</a></p>
+  
+</form>
+	  <!-- Default form register -->
+	

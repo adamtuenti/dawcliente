@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +16,32 @@ export class ArticuloService {
 
   getArticulos(){
     return this.http.get<any[]>(this.apiUrl+'articulos/?format=json')
+  }
+
+  postContact(postData) {    
+    
+    console.log(postData);
+    let private_options = { 
+      headers: new HttpHeaders(
+        { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+        ) 
+    };
+    return this.http.post(this.apiUrl+"contact/",postData,private_options);
+    
+  }
+
+  postUsuario(postData){
+    console.log(postData);
+    let private_options = { 
+      headers: new HttpHeaders(
+        { 'Content-Type': 'application/json' }
+        ) 
+    };
+    return this.http.post(this.apiUrl+"usuario/",postData,private_options);
+  }
+
+  getBuscarUsuario(cedula){
+    
+    return this.http.get(this.apiUrl+"buscarUsuario/?cedula="+cedula);
   }
 }

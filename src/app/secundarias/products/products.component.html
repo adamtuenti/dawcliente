@@ -1,52 +1,66 @@
-<div id="mainBody">
-	<div class="container">
-	<div class="row">
-<!-- Sidebar ================================================== -->
-	
-	</div>
-<!-- Sidebar end=============================================== -->
+<form class="text-center border border-light p-5">
 
-	<div class="span9">
-   
-	<h3>Registro de producto</h3>	
-	<hr class="soft"/>
-	
-	<div style="align-content: center">
-		<div >
-			<div ><!-- !!!!!!!!!!!!!!!!!!!!!!-->
-				<h4 id="ingr">Ingresa los datos del producto</h4>
-
-
-
-				
-				<form action="index.html">
-				  <div class="control-group " >
-					<label class="control-label" for="Nombre">Nombre: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="span3"  type="text" id="Nombre" ></label>
-					  
-					<label class="control-label" for="Apellido">Precio: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="span3"  type="text" id="Apellido" ></label>
-					
-					<label class="control-label" for="inputEmail0">Descripcion: &nbsp;&nbsp;&nbsp;<input  class="span3"  type="text" id="inputEmail0" ></label>
-					
-          <input type="file" (change)="onFileChanged($event)">       
-          
-
-         
-
-          
-        
-					
-					
-				  </div>
-				  <div class="controls">
-				  <button class="btn btn-success btn block" type="submit">Subir producto</button>
-				  </div>
-				</form>
-			</div>
+		<p class="h4 mb-4">Registra tu producto</p>
+  
+		<div class="form-row mb-4">
+		  <div class="col">
+			<!-- First name -->
+			<input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Titulo">
+		  </div>
+		  <div class="col">
+			<!-- Last name -->
+			<input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Descripcion">
+		  </div>
 		</div>
+  
+		<input type="float" id="cedulaUsuario" class="form-control mb-4" placeholder="% de donacion">
+
+		<input type="float" id="direccionUsuario" class="form-control mb-4" placeholder="Precio">
+
+		<ul class="navbar-nav ml-auto">		
+				<li class="nav-item">
+						<a class="nav-link">
+						  <div class="btn-group" mdbDropdown>
+
+
+		<a class="nav-link dropdown-toggle waves-light"  id="navbarDropdownMenuLink" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">Categorias</a>
+							<div class="dropdown-menu dropdown dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+				
+									<a *ngFor="let categoria of categorias" class="dropdown-item waves-light">{{categoria.nombre}}</a>
+								
+							</div> 
 		
-	</div>	
+						</div>
+						 
+						</a>
+				</li>
+		</ul>
+				  <input type="file" (change)="onFileChanged($event)"> 
+
 	
-	
-</div>
-</div>
-</div>
+  
+		
+		<!-- Newsletter -->
+		
+  
+		<!-- Sign up button -->
+		<br>
+		<div>
+				<button class="btn btn-success btn block" block="true" type="submit">Registro</button>
+		</div>
+		<!-- Social register -->
+		
+  
+		<hr>
+  
+		<!-- Terms of service -->
+		<p>Gracias por permanecer con nosotros
+		  <a routerLink="/about" target="_blank">Acerca de nosotros</a></p>
+  
+</form>
+
+
+
+
+

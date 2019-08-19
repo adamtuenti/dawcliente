@@ -30,6 +30,7 @@ import { VentasPordiaComponent } from './secundarias/ventas-pordia/ventas-pordia
 import { SignComponent } from './secundarias/sign/sign.component';
 import { AdoptaComponent } from './secundarias/adopta/adopta.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
 const rutas: Routes = [
@@ -58,7 +59,7 @@ const rutas: Routes = [
 
 @NgModule({
   providers:    [ ArticuloService ],
-  imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(rutas),HttpClientModule ],
+  imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(rutas),HttpClientModule,MDBBootstrapModule.forRoot() ],
   declarations: [ AppComponent, HeaderComponent, FooterComponent, MainComponent, ProductsComponent, AboutComponent, LoginComponent, ContactComponent, AdminComponent, AdminUserComponent, GestionComponent, ReportesComponent, PanelControlComponent, MascotaspublicadasComponent, HistorialSolicitudesComponent, ListaMascotasComponent, ListaProductosComponent, ListaVentasComponent, ProductosCategoriaComponent, SolicitudesVentaComponent, UsuariosFechaComponent, VentasPordiaComponent, SignComponent, AdoptaComponent ],
   bootstrap:    [ AppComponent ]
 })
