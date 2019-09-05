@@ -12,11 +12,22 @@ export class HeaderComponent implements OnInit {
   
   isShown:boolean = false;
   categorias;
+  rol;
+  usuario;
 
-  constructor(private articuloServicio: ArticuloService) { }
+  constructor(private articuloServicio: ArticuloService) { 
+    this.rol=0;
+
+
+  }
 
   ngOnInit() {
     this.GetData();
+    this.rol=localStorage.getItem("id_rol");
+    this.usuario=localStorage.getItem("id_usuario");
+  
+    console.log(this.usuario);
+    console.log(this.rol);
 
   }
 
@@ -28,6 +39,14 @@ export class HeaderComponent implements OnInit {
   }
   probar(){
     console.log(this.categorias);
+  }
+
+  cerrarSesion(){
+    this.usuario=0;
+    this.rol=0;
+    localStorage.setItem("id_usuario","0");
+    localStorage.setItem("id_rol","0");
+
   }
 
 

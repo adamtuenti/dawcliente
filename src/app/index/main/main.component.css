@@ -4,6 +4,21 @@
     text-align: center;
 }
 
+.classimage{
+  width: 175px;
+  height: 150px;
+  display:block;
+      margin:auto;
+}
+
+
+.nombreArt{
+  text-align: center;
+  font: oblique bold 120% cursive;
+}
+
+
+
 #navbarP{
 	background: #306e5a ;
 	align-content: center;
@@ -16,6 +31,11 @@
     padding: 2%;
 
 
+}
+
+
+#encabezado{
+  text-align: center;
 }
 #carrusel{
   background: #aacac0
@@ -113,6 +133,38 @@
 .articulo_card{
 
   max-width: 200px;
+}
+
+
+
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
 }
 
 

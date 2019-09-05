@@ -1,42 +1,31 @@
-<form class="text-center border border-light p-5">
+<form name="myForm" class="text-center border border-light p-5 ml-auto" #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate >
 
 		<p class="h4 mb-4">Registra tu producto</p>
-  
+		
 		<div class="form-row mb-4">
 		  <div class="col">
 			<!-- First name -->
-			<input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Titulo">
+			<input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Titulo" name="nombre" ngModel ng-required="myVar" >
 		  </div>
 		  <div class="col">
 			<!-- Last name -->
-			<input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Descripcion">
+			<input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Descripcion" name="descrip" ngModel ng-required="myVar">
 		  </div>
 		</div>
   
-		<input type="float" id="cedulaUsuario" class="form-control mb-4" placeholder="% de donacion">
+		<input type="float" id="donacion" class="form-control mb-4" placeholder="% de donacion" name="donacion" ngModel ng-required="myVar">
 
-		<input type="float" id="direccionUsuario" class="form-control mb-4" placeholder="Precio">
-
-		<ul class="navbar-nav ml-auto">		
-				<li class="nav-item">
-						<a class="nav-link">
-						  <div class="btn-group" mdbDropdown>
+		<input type="float" id="precio" class="form-control mb-4" placeholder="Precio" name="precio" ngModel ng-required="myVar">
 
 
-		<a class="nav-link dropdown-toggle waves-light"  id="navbarDropdownMenuLink" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">Categorias</a>
-							<div class="dropdown-menu dropdown dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+		<select class="browser-default custom-select mb-4" name="id_categoria" ngModel ng-required="myVar">
+				<option value="" disabled>Seleccione categoria</option>
 				
-									<a *ngFor="let categoria of categorias" class="dropdown-item waves-light">{{categoria.nombre}}</a>
-								
-							</div> 
+				<option *ngFor="let categoria of categorias" value="{{categoria.id_categoria}}">{{categoria.nombre}}</option>
+		</select>
+
 		
-						</div>
-						 
-						</a>
-				</li>
-		</ul>
-				  <input type="file" (change)="onFileChanged($event)"> 
+		<input type="file" (change)="onFileChanged($event)"> 
 
 	
   
@@ -47,7 +36,7 @@
 		<!-- Sign up button -->
 		<br>
 		<div>
-				<button class="btn btn-success btn block" block="true" type="submit">Registro</button>
+				<button class="btn btn-success btn block" block="true" type="submit" ng-model="myVar">Registro</button>
 		</div>
 		<!-- Social register -->
 		

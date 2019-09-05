@@ -1,0 +1,52 @@
+<div class="text-center border border-light p-5 ml-auto"  >
+
+		<p class="h4 mb-4">Actualizar</p>
+		<div class="form-row mb-4">
+		  <div class="col">
+			<input type="text" [formControl]="nombre" >
+		  </div>
+		  <div class="col">
+			<input type="text" [formControl]="descrip" >
+		  </div>
+		</div>
+  
+		<input type="float" [formControl]="donacion" >
+
+		<input type="float" [formControl]="precio" >
+
+
+		<select class="browser-default custom-select mb-4" [formControl] ="id_categoria">
+				<option value="" disabled>Seleccione categoria</option>
+				
+				<option *ngFor="let categoria of categorias" value="{{categoria.id_categoria}}" >{{categoria.nombre}}</option>
+		</select>
+
+		
+		<input type="file" (change)="onFileChanged($event)"> 
+
+	
+  
+		
+		<!-- Newsletter -->
+		
+  
+		<!-- Sign up button -->
+		<br>
+		<div>
+                <button class="btn btn-success btn block" block="true" type="submit" ng-model="myVar">Actualizar</button>
+                <button routerLink="/misArticulos" class="btn btn-success btn block" block="true" type="submit">Cancelar</button>
+		</div>
+		<!-- Social register -->
+		
+  
+		<hr>
+  
+		<!-- Terms of service -->
+		<p>Gracias por permanecer con nosotros
+		  <a routerLink="/about" target="_blank">Acerca de nosotros</a></p>
+  
+</div>
+
+
+
+

@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticuloService } from 'src/app/providers/articulo/articulo.service';
-
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  selector: 'app-mis-productos',
+  templateUrl: './mis-productos.component.html',
+  styleUrls: ['./mis-productos.component.css']
 })
-export class MainComponent implements OnInit {
-
-  
+export class MisProductosComponent implements OnInit {
+ 
   urlweb ='http://127.0.0.1:8000';
   articulos=null;
 
-  constructor( private articuloServicio: ArticuloService) { 
+  constructor( private articuloServicio: ArticuloService,public router: Router) { 
     
   }
 
@@ -25,7 +24,7 @@ export class MainComponent implements OnInit {
   }
 
   GetData() {
-    this.articuloServicio.getArticulos()
+    this.articuloServicio.getArticulosComprador(localStorage.getItem('id_usuario'))
       .subscribe(data => {
         this.articulos = data;
         console.log(this.articulos);
@@ -49,11 +48,23 @@ export class MainComponent implements OnInit {
     
   }
 
-
-  probar(){
-    //this.GetData();
+  elimiarArticulo(articulo){
+    console.log("eliminar");
+    this.articuloServicio.deleteArticulo(articulo.id_articulo)
+    .subscribe(data => {
+      console.log(data);
+      window.location.reload();
+    },(error)=>{console.log(error);
+      
     
-    console.log(this.articulos);
+      //console.log(result)
+    });
+
   }
+/*
+  gotoActualizar(articulo){
+    
+    this.router.navigateByUrl('/123', { state: { data: articulo } });
+  }*/
 
 }

@@ -1,0 +1,33 @@
+<h3 id='titulo'>Mis artículos en venta</h3>
+<hr class="soften"/>
+
+<div  class = 'contenedor' *ngIf="articulos?.length>0; else noHay">
+        <div   *ngFor="let articulo of articulos" class="col-sm-6 card">
+                
+            <img class= 'imageclass' [src]="articulo.imagenes[0].imagen" alt="..">
+            <h3>{{articulo?.nombre}}</h3>
+            <p class="price">$ {{articulo?.precio}}</p>
+            <p>{{articulo?.descrip}}</p>
+            <div style="float: left">
+            <p><button class="btn btn-danger boton" (click)="elimiarArticulo(articulo)" >Eliminar</button></p>
+            </div>
+            <div style="float: right">
+            <p><button class="btn btn-success boton"  routerLink="/actualizar_articulo" [state]="{data : articulo}" block="true" >Actualizar</button></p>
+            </div>
+                
+        </div>
+
+
+</div>
+
+<ng-template #noHay>
+    <div id='content'>
+        <div>
+    <h2 id='texto'>Ups! No tienes ningun artículo en venta!</h2>
+    <img id = 'imagenohay' src="https://st.depositphotos.com/1001291/4520/v/950/depositphotos_45200757-stock-illustration-cartoon-oops-with-rays.jpg" alt=".." >
+        </div>
+    <button routerLink="/products" class="btn btn-success btn block" block="true" type="submit" ng-model="myVar">Subir artículo</button>
+    
+    </div>
+   
+</ng-template>  

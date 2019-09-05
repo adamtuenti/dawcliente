@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient,HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class ArticuloService {
   }
 
   getArticulos(){
-    return this.http.get<any[]>(this.apiUrl+'articulos/?format=json')
+    return this.http.get<any[]>(this.apiUrl+'todosLosArticulos/?format=json')
   }
 
   postContact(postData) {    
@@ -44,4 +44,37 @@ export class ArticuloService {
     
     return this.http.get(this.apiUrl+"buscarUsuario/?cedula="+cedula);
   }
+
+  postComprobarUsuario(postData){
+    let private_options = { 
+      headers: new HttpHeaders(
+        { 'Content-Type': 'application/json' }
+        ) 
+    };
+    return this.http.post(this.apiUrl+"comprobarUsuario/",postData,private_options);
+  }
+
+  getArticulosComprador(id_usuario){
+    return this.http.get(this.apiUrl+"articulosComprador/?id_usuario="+id_usuario);
+  }
+
+  deleteArticulo(id_articulo){
+    /*let private_options = { 
+      headers: new HttpHeaders(
+        { 'Content-Type': 'application/json' }
+        ) 
+    };*/
+    console.log(id_articulo);
+    return this.http.delete(this.apiUrl+"articulosComprador/?id_articulo="+id_articulo/*,private_options*/);
+  }
+
+  postNuevoArticulo(postData){
+    let private_options = { 
+      headers: new HttpHeaders(
+        { 'Content-Type': 'application/json' }
+        ) 
+    };
+    return this.http.post(this.apiUrl+"articulosComprador/",postData,private_options);
+  }
+  
 }

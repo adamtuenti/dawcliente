@@ -1,0 +1,53 @@
+.imageclass{
+  width: 100px;
+  height: 125px;
+  display:block;
+  margin:auto;
+}
+
+.boton{
+  width: 95px;
+  height: 50px;
+}
+
+.contenedor{
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  width: 250px;
+  
+  text-align: center;
+  font-family: arial;
+  height: 325px;
+  
+}
+
+#titulo{
+  text-align: center;
+}
+
+#id{
+    align-content: center;
+}
+
+
+
+  #imagenohay{
+      height: 350px;
+      height: 325px;
+      display:block;
+      margin:auto;
+  }
+  
+ 
+  #texto{
+      text-align: center;
+  }
+
+  .block{
+    display:block;
+    margin:auto;
+
+  }
+  
+  .card button:hover {
+    opacity: 0.7;
+  }

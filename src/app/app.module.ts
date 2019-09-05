@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ArticuloService } from './providers/articulo/articulo.service';
 
@@ -31,6 +32,8 @@ import { SignComponent } from './secundarias/sign/sign.component';
 import { AdoptaComponent } from './secundarias/adopta/adopta.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MisProductosComponent } from './secundarias/mis-productos/mis-productos.component';
+import { ActualizarArticuloComponent } from './secundarias/actualizar-articulo/actualizar-articulo.component';
 
 
 const rutas: Routes = [
@@ -53,14 +56,16 @@ const rutas: Routes = [
   { path: 'usuarios_fecha', component: UsuariosFechaComponent },
   { path: 'productos_categoria', component: ProductosCategoriaComponent },
   { path: 'ventas_pordia', component: VentasPordiaComponent },
-   { path: 'sign', component: SignComponent },
-   { path: 'adopta', component: AdoptaComponent  }
+  { path: 'sign', component: SignComponent },
+  { path: 'adopta', component: AdoptaComponent  },
+  { path: 'mis_productos', component: MisProductosComponent  },
+  { path: 'actualizar_articulo', component: ActualizarArticuloComponent  }
 ];
 
 @NgModule({
   providers:    [ ArticuloService ],
-  imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(rutas),HttpClientModule,MDBBootstrapModule.forRoot() ],
-  declarations: [ AppComponent, HeaderComponent, FooterComponent, MainComponent, ProductsComponent, AboutComponent, LoginComponent, ContactComponent, AdminComponent, AdminUserComponent, GestionComponent, ReportesComponent, PanelControlComponent, MascotaspublicadasComponent, HistorialSolicitudesComponent, ListaMascotasComponent, ListaProductosComponent, ListaVentasComponent, ProductosCategoriaComponent, SolicitudesVentaComponent, UsuariosFechaComponent, VentasPordiaComponent, SignComponent, AdoptaComponent ],
+  imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(rutas),HttpClientModule,MDBBootstrapModule.forRoot(),ReactiveFormsModule ],
+  declarations: [ AppComponent, HeaderComponent, FooterComponent, MainComponent, ProductsComponent, AboutComponent, LoginComponent, ContactComponent, AdminComponent, AdminUserComponent, GestionComponent, ReportesComponent, PanelControlComponent, MascotaspublicadasComponent, HistorialSolicitudesComponent, ListaMascotasComponent, ListaProductosComponent, ListaVentasComponent, ProductosCategoriaComponent, SolicitudesVentaComponent, UsuariosFechaComponent, VentasPordiaComponent, SignComponent, AdoptaComponent, MisProductosComponent, ActualizarArticuloComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
