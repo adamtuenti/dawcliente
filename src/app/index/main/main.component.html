@@ -4,17 +4,17 @@
 		
 	
 	<div>
-	<h2 id='encabezado'>Productos frecuentes</h2>
+	<h2 id='encabezado'>Productos a la venta</h2>
 	<hr class="soften"/>	
 	</div >
-		<div class="carousel" >
-				<div *ngFor="let articulo of articulos" class="col-md-1 card ">
+		<div class="carousel " >
+				<div *ngFor="let articulo of articulos" class="col-md-2 card ">
 			
 						<img class="classimage" [src]="articulo.imagenes[0]?.imagen">
 						
 						<h3 class='nombreArt'>{{articulo?.nombre}}</h3>
 						<p class="price">$ {{articulo?.precio}}</p>
-						<p class="price">$ {{articulo?.donacion}}</p>
+						<p class="price">{{articulo?.donacion}} %</p>
 						
 						<button class="btn btn-success" (click)="probar()">Add to Cart</button>
 							

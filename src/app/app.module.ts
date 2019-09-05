@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxNavigationWithDataComponent } from "ngx-navigation-with-data";
 
 import { ArticuloService } from './providers/articulo/articulo.service';
 
@@ -34,6 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MisProductosComponent } from './secundarias/mis-productos/mis-productos.component';
 import { ActualizarArticuloComponent } from './secundarias/actualizar-articulo/actualizar-articulo.component';
+import { ArticulosFiltradosComponent } from './secundarias/articulos-filtrados/articulos-filtrados.component';
+import { DataService } from './data-service.service';
 
 
 const rutas: Routes = [
@@ -59,13 +62,14 @@ const rutas: Routes = [
   { path: 'sign', component: SignComponent },
   { path: 'adopta', component: AdoptaComponent  },
   { path: 'mis_productos', component: MisProductosComponent  },
-  { path: 'actualizar_articulo', component: ActualizarArticuloComponent  }
+  { path: 'actualizar_articulo', component: ActualizarArticuloComponent  },
+  { path: 'articulos_filtrados', component: ArticulosFiltradosComponent  }
 ];
 
 @NgModule({
-  providers:    [ ArticuloService ],
+  providers:    [ ArticuloService,NgxNavigationWithDataComponent, DataService],
   imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(rutas),HttpClientModule,MDBBootstrapModule.forRoot(),ReactiveFormsModule ],
-  declarations: [ AppComponent, HeaderComponent, FooterComponent, MainComponent, ProductsComponent, AboutComponent, LoginComponent, ContactComponent, AdminComponent, AdminUserComponent, GestionComponent, ReportesComponent, PanelControlComponent, MascotaspublicadasComponent, HistorialSolicitudesComponent, ListaMascotasComponent, ListaProductosComponent, ListaVentasComponent, ProductosCategoriaComponent, SolicitudesVentaComponent, UsuariosFechaComponent, VentasPordiaComponent, SignComponent, AdoptaComponent, MisProductosComponent, ActualizarArticuloComponent ],
+  declarations: [ AppComponent, HeaderComponent, FooterComponent, MainComponent, ProductsComponent, AboutComponent, LoginComponent, ContactComponent, AdminComponent, AdminUserComponent, GestionComponent, ReportesComponent, PanelControlComponent, MascotaspublicadasComponent, HistorialSolicitudesComponent, ListaMascotasComponent, ListaProductosComponent, ListaVentasComponent, ProductosCategoriaComponent, SolicitudesVentaComponent, UsuariosFechaComponent, VentasPordiaComponent, SignComponent, AdoptaComponent, MisProductosComponent, ActualizarArticuloComponent, ArticulosFiltradosComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

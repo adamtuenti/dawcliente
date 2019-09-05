@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ArticuloService } from 'src/app/providers/articulo/articulo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign',
@@ -10,7 +11,7 @@ import { ArticuloService } from 'src/app/providers/articulo/articulo.service';
 export class SignComponent implements OnInit {
   res
 
-  constructor(private articuloServicio: ArticuloService) { }
+  constructor(private articuloServicio: ArticuloService, private router:Router) { }
 
   
   ngOnInit() {
@@ -43,6 +44,9 @@ export class SignComponent implements OnInit {
      }, error => {
       console.log(error);
     });
+
+
+    this.router.navigateByUrl('/login')
 
   }
 

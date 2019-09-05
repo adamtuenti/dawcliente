@@ -26,7 +26,7 @@
 										aria-haspopup="true" aria-expanded="false">Categorías</a>
 									<div class="dropdown-menu dropdown dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
 						
-											<a *ngFor="let categoria of categorias" class="dropdown-item waves-light">{{categoria.nombre}}</a>
+											<a *ngFor="let categoria of categorias" class="dropdown-item waves-light"  (click)="categoriaSelect(categoria)">{{categoria.nombre}}</a>
 										
 									</div> 
 				
@@ -37,7 +37,7 @@
 						<li class="nav-item active">
 								<a class="nav-link waves-light" routerLink="/" (click)="probar()">Principal</a></li>	
 							
-							<li class="nav-item active">
+							<li *ngIf="rol==2" class="nav-item active">
 								<a class="nav-link waves-light" routerLink="/products">Vender</a></li>
 							<li class="nav-item active">
 								<a class="nav-link waves-light" routerLink="/about">Nosotros</a></li>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticuloService } from 'src/app/providers/articulo/articulo.service';
 import { FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
+import { NgxNavigationWithDataComponent } from 'ngx-navigation-with-data';
+import { DataService } from "../../data-service.service";
 @Component({
   selector: 'app-actualizar-articulo',
   templateUrl: './actualizar-articulo.component.html',
@@ -13,29 +15,37 @@ export class ActualizarArticuloComponent implements OnInit {
   donacion  = new FormControl('');
   precio  = new FormControl('');
   id_categoria  = new FormControl('');
-
+  message:string;
   articulo;
   imagenNombre: any;
   imagen: any;
   categorias: any[];
   form;
 
-  constructor(private articuloServicio: ArticuloService,public activatedRoute: ActivatedRoute) { 
+  constructor(private articuloServicio: ArticuloService,public activatedRoute: ActivatedRoute, private router: Router, private navCtrl:NgxNavigationWithDataComponent) { 
     
   }
 
 
 
   ngOnInit() {
+    console.log("entra !!!!!!!!!!!!")
+    
 
-    this.articulo=history.state.data
-    console.log(this.articulo);
+    //console.log(this.navCtrl.get('nombre'));
+    this.articulo=this.navCtrl.get('articulo')
+
+    //this.articulo=history.state.nombre
+    //console.log("hola      "+this.router.getCurrentNavigation().extras.state.nombre)
+    //console.log(this.articulo);
     this.GetData();
     this.nombre.setValue(this.articulo.nombre);
     this.descrip.setValue(this.articulo.descrip);
     this.id_categoria.setValue(this.articulo.id_categoria);
     this.precio.setValue(this.articulo.precio);
     this.donacion.setValue(this.articulo.donacion);
+    
+    
     
 
   }
@@ -65,11 +75,19 @@ export class ActualizarArticuloComponent implements OnInit {
       }));
   }
 
-  onSubmit(f){
-    let postdata=f.value;
-    postdata.imagen=this.imagen;
-    postdata.imagen_nombre=this.imagenNombre;
-    postdata.id_usuario=localStorage.getItem("id_usuario");
+  actualizar(){
+    let postdata={
+      nombre  : this.nombre.value,
+      descrip  : this.descrip.value,
+      donacion  : parseFloat(this.donacion.value),
+      precio  : parseFloat(this.precio.value),
+      id_categoria  : this.id_categoria.value,
+      imagen: this.imagen,
+      imagen_nombre: this.imagenNombre,
+      id_usuario: parseInt(localStorage.getItem("id_usuario")),
+      id_articulo: this.articulo.id_articulo
+
+    };
     console.log(postdata);
     this.articuloServicio.postNuevoArticulo(postdata)
     .subscribe(res=>{
@@ -77,6 +95,10 @@ export class ActualizarArticuloComponent implements OnInit {
     },(error=>{
       console.log(error);
     }));
+
+    window.location.reload();
+
+    this.router.navigateByUrl('/mis_productos');
 
   }
 

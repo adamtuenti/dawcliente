@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticuloService } from 'src/app/providers/articulo/articulo.service';
-import { Router } from '@angular/router';
+import { Router,NavigationExtras } from '@angular/router';
+import { NgxNavigationWithDataComponent } from 'ngx-navigation-with-data';
+
 
 @Component({
   selector: 'app-mis-productos',
@@ -12,7 +14,7 @@ export class MisProductosComponent implements OnInit {
   urlweb ='http://127.0.0.1:8000';
   articulos=null;
 
-  constructor( private articuloServicio: ArticuloService,public router: Router) { 
+  constructor( private articuloServicio: ArticuloService,public router: Router, private navCtrl:NgxNavigationWithDataComponent) { 
     
   }
 
@@ -41,7 +43,6 @@ export class MisProductosComponent implements OnInit {
       for(let articulo of this.articulos){
         for(let imagen of articulo.imagenes){
           imagen.imagen= this.urlweb+imagen.imagen;
-          console.log("pruea");
         }
       }
     }
@@ -61,10 +62,16 @@ export class MisProductosComponent implements OnInit {
     });
 
   }
-/*
+
+
+
+
   gotoActualizar(articulo){
+
+    this.navCtrl.navigate('actualizar_articulo', {articulo:articulo});
+    //this.router.navigate(['/actualizar_articulo'], { state: { nombre: articulo.nombre } });
     
-    this.router.navigateByUrl('/123', { state: { data: articulo } });
-  }*/
+    //this.router.navigateByUrl('/123', { state: { data: articulo } });
+  }
 
 }

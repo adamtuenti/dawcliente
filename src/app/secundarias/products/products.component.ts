@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticuloService } from '../../providers/articulo/articulo.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -14,7 +15,7 @@ export class ProductsComponent implements OnInit {
   imagen: any;
   imagenData;
   
-  constructor(private articuloServicio: ArticuloService) { }
+  constructor(private articuloServicio: ArticuloService, private router:Router) { }
 
   ngOnInit() {
     this.GetData();
@@ -59,6 +60,7 @@ export class ProductsComponent implements OnInit {
   GetData() {
     this.articuloServicio.getCategorias().subscribe(data => {
         this.categorias = data;
+        console.log(this.categorias)
         
       });
   }
@@ -72,6 +74,7 @@ export class ProductsComponent implements OnInit {
     this.articuloServicio.postNuevoArticulo(postdata)
     .subscribe(res=>{
       console.log(res);
+      this.router.navigateByUrl('/mis_productos')
     },(error=>{
       console.log(error);
     }));

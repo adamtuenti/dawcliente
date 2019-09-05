@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
       }else if(data.id_rol==2){
         this.router.navigate(['/mis_productos'])
       }else if(data.id_rol==3){
+        window.location.href = 'http://localhost:8000/admin/';		  
 
       }
      

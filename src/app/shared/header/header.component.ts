@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ArticuloService } from '../../providers/articulo/articulo.service'
+import { NgxNavigationWithDataComponent } from 'ngx-navigation-with-data';
+import { DataService } from "../../data-service.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,14 +17,19 @@ export class HeaderComponent implements OnInit {
   categorias;
   rol;
   usuario;
+  message;
+  categoria;
 
-  constructor(private articuloServicio: ArticuloService) { 
+  constructor(private articuloServicio: ArticuloService, private navCtrl:NgxNavigationWithDataComponent,private data: DataService, private router:Router) { 
     this.rol=0;
 
 
   }
 
   ngOnInit() {
+    
+    this.data.currentMessage.subscribe(message => this.message = message)
+    
     this.GetData();
     this.rol=localStorage.getItem("id_rol");
     this.usuario=localStorage.getItem("id_usuario");
@@ -34,6 +42,7 @@ export class HeaderComponent implements OnInit {
   GetData() {
     this.articuloServicio.getCategorias().subscribe(data => {
         this.categorias = data;
+        console.log(this.categorias);
         
       });
   }
@@ -48,6 +57,24 @@ export class HeaderComponent implements OnInit {
     localStorage.setItem("id_rol","0");
 
   }
+
+  categoriaSelect(categoria){
+    console.log(categoria);
+    this.categoria=categoria;
+    this.newMessage(categoria.id_categoria);
+
+    this.router.navigateByUrl('/articulos_filtrados', {skipLocationChange: true}).then(()=>
+    this.router.navigate(["articulos_filtrados"]));
+    
+    //window.location.reload();
+  }
+
+  newMessage(categoria_id) {
+    
+    this.data.changeMessage(categoria_id)
+  }
+
+  
 
 
 }

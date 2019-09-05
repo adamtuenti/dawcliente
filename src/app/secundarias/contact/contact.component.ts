@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticuloService } from 'src/app/providers/articulo/articulo.service';
 import { NgForm } from '@angular/forms';
+import * as $ from "jquery"
 
 @Component({
   selector: 'app-contact',
@@ -19,31 +20,39 @@ export class ContactComponent implements OnInit {
   constructor(private articuloServicio: ArticuloService) { }
 
   ngOnInit() {
-  }
+    $("#submit").click(function(){
+      var data = {
+        name: $("#name").val(),
+        city: $("#city").val(),
+        email: $("#email").val(),
+        issue: $("#issue").val(),
+        message: $("#message").val()
 
-  onSubmit(f: NgForm) {
-    /*let postData ={
-      "name": this.name,
-      "city": this.city,
-      "email": this.email,
-      "issue": this.issue,
-      "message": this.message,
-    }*/
-    console.log(f.value);
-    this.data=this.articuloServicio.postContact(f.value);
-    this.data.subscribe(data => {
-      console.log(data);
+      };
+
+      //var csrftoken = getCookie('csrftoken');
+      //var headers = new Headers();
+      //headers.append('X-CSRFToken', csrftoken);
       
+      $.ajax({
+        url: 'http://localhost:8000/contact', 
+        data: data,
+        dataType: 'json',
+        method: 'POST',
+        success: function(data){
+            console.log("SUBMIT ENVIADO")
+        },
+        
+        //error: function (){ alert('An error occured'); }
+      });
+      $("#name").val("");
+      $("#city").val("");
+      $("#email").val("");
+      $("#issue").val("");
+      $("#message").val("");
 
-      
-
-     }, error => {
-      console.log(error);
-    });
-
+    })
   }
-
-
 
 
 }

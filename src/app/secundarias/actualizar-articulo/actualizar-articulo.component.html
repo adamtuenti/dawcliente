@@ -1,28 +1,47 @@
+
+
+
+<h3 id='titulo'>Actualizar producto</h3>
+<hr class="soften"/>
+		 
+		
 <div class="text-center border border-light p-5 ml-auto"  >
 
-		<p class="h4 mb-4">Actualizar</p>
+		
 		<div class="form-row mb-4">
 		  <div class="col">
-			<input type="text" [formControl]="nombre" >
+				<input type="text" [formControl]="nombre" placeholder="Titulo" class="form-control">
 		  </div>
 		  <div class="col">
-			<input type="text" [formControl]="descrip" >
+				<input type="text" [formControl]="descrip" placeholder="Descripcion" class="form-control">
 		  </div>
 		</div>
+
+		<div class="form-row mb-4">
+				<div class="col">
   
-		<input type="float" [formControl]="donacion" >
+		<input type="float" [formControl]="donacion" placeholder="% de donacion" class="form-control">
+					</div>
+					<div class="col">
+		<input type="float" [formControl]="precio" placeholder="Precio" class="form-control">
+	</div>
+	</div>
 
-		<input type="float" [formControl]="precio" >
-
+	<div>
 
 		<select class="browser-default custom-select mb-4" [formControl] ="id_categoria">
 				<option value="" disabled>Seleccione categoria</option>
 				
+
 				<option *ngFor="let categoria of categorias" value="{{categoria.id_categoria}}" >{{categoria.nombre}}</option>
 		</select>
 
+	</div>
+	<div>
 		
 		<input type="file" (change)="onFileChanged($event)"> 
+
+	</div>
 
 	
   
@@ -32,10 +51,16 @@
   
 		<!-- Sign up button -->
 		<br>
+
 		<div>
-                <button class="btn btn-success btn block" block="true" type="submit" ng-model="myVar">Actualizar</button>
-                <button routerLink="/misArticulos" class="btn btn-success btn block" block="true" type="submit">Cancelar</button>
+				
+				<button class="btn btn-success btn block boton" (click)="actualizar()">Actualizar</button>
+				
+			</div>
+			<div>
+                <button routerLink="/misArticulos" class="btn btn-warning boton" block="true" type="submit">Cancelar</button>
 		</div>
+		
 		<!-- Social register -->
 		
   
@@ -49,4 +74,8 @@
 
 
 
+
+	
+		
+		
 

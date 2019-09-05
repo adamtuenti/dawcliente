@@ -1,6 +1,8 @@
+<h3 id='title'>Registra tu producto</h3>
+		<hr class="soften"/>
 <form name="myForm" class="text-center border border-light p-5 ml-auto" #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate >
 
-		<p class="h4 mb-4">Registra tu producto</p>
+		
 		
 		<div class="form-row mb-4">
 		  <div class="col">
@@ -24,8 +26,10 @@
 				<option *ngFor="let categoria of categorias" value="{{categoria.id_categoria}}">{{categoria.nombre}}</option>
 		</select>
 
+		<div>
 		
 		<input type="file" (change)="onFileChanged($event)"> 
+	</div>
 
 	
   
@@ -36,7 +40,7 @@
 		<!-- Sign up button -->
 		<br>
 		<div>
-				<button class="btn btn-success btn block" block="true" type="submit" ng-model="myVar">Registro</button>
+				<button  class="btn btn-success btn block" block="true" type="submit" ng-model="myVar">Subir</button>
 		</div>
 		<!-- Social register -->
 		

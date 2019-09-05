@@ -5,7 +5,7 @@
 		<div class="form-row mb-4">
 		  <div class="col">
 			<!-- First name -->
-			<input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Nombres" name="nombres" ngModel="nombre" ng-required="myVar" >
+			<input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Nombres" name="nombres" ngModel ng-required="myVar" >
 		  </div>
 		  <div class="col">
 			<!-- Last name -->
@@ -14,7 +14,7 @@
 		</div>
 		
   
-		<input type="text" id="cedulaUsuario" class="form-control mb-4" placeholder="Cedula" name="cedula" required>
+		<input type="text" id="cedulaUsuario" class="form-control mb-4" placeholder="Cedula" name="cedula" ngModel>
 
 		<input type="text" id="direccionUsuario" class="form-control mb-4" placeholder="Direccion" name="direccion" ngModel>
 
@@ -43,7 +43,7 @@
   
 		<!-- Sign up button -->
 		<div>
-				<button routerLink="/admin" class="btn btn-success btn block" block="true" type="submit" ng-model="myVar">Registro</button>
+				<button  class="btn btn-success btn block" block="true" type="submit" ng-model="myVar">Registro</button>
 		</div>
 		<!-- Social register -->
 		

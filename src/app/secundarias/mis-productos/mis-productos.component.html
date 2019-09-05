@@ -1,18 +1,18 @@
 <h3 id='titulo'>Mis artículos en venta</h3>
 <hr class="soften"/>
 
-<div  class = 'contenedor' *ngIf="articulos?.length>0; else noHay">
-        <div   *ngFor="let articulo of articulos" class="col-sm-6 card">
-                
+<div   *ngIf="articulos?.length>0; else noHay">
+        <div   *ngFor="let articulo of articulos" class="col-sm-6 card contenedor">
+                <h4>{{articulo?.nombre}}</h4>     
             <img class= 'imageclass' [src]="articulo.imagenes[0].imagen" alt="..">
-            <h3>{{articulo?.nombre}}</h3>
+            
             <p class="price">$ {{articulo?.precio}}</p>
             <p>{{articulo?.descrip}}</p>
-            <div style="float: left">
-            <p><button class="btn btn-danger boton" (click)="elimiarArticulo(articulo)" >Eliminar</button></p>
-            </div>
-            <div style="float: right">
-            <p><button class="btn btn-success boton"  routerLink="/actualizar_articulo" [state]="{data : articulo}" block="true" >Actualizar</button></p>
+            <div  style="float: left">
+            <p class="botones_elim_actual"><button class="btn btn-danger boton" (click)="elimiarArticulo(articulo)" >Eliminar</button></p>
+            
+          
+            <p class="botones_elim_actual"><button class="btn btn-success boton"  (click)="gotoActualizar(articulo)" block="true" >Actualizar</button></p>
             </div>
                 
         </div>
