@@ -1,25 +1,29 @@
-import { Component, OnInit, AfterViewInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { ArticuloService } from 'src/app/providers/articulo/articulo.service';
 import { NgxNavigationWithDataComponent } from 'ngx-navigation-with-data';
 import { DataService } from 'src/app/data-service.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { HeaderComponent } from '../../shared/header/header.component';
 
 @Component({
   selector: 'app-articulos-filtrados',
   templateUrl: './articulos-filtrados.component.html',
   styleUrls: ['./articulos-filtrados.component.css']
 })
-export class ArticulosFiltradosComponent implements OnInit  {
+export class ArticulosFiltradosComponent implements AfterViewInit  {
 
   urlweb ='http://127.0.0.1:8000';
-  articulos=null;
-  articulos2;
-  categoria;
+  articulos = [];
+  articulos2 = [];
+  categoria = '';
   message: string;
-  
+
   mySubscription: any;
 
-  constructor( private articuloServicio: ArticuloService,private navCtrl:NgxNavigationWithDataComponent,private data: DataService,private router:Router) { 
+  constructor(private articuloServicio: ArticuloService, 
+              private navCtrl: NgxNavigationWithDataComponent,
+              private data: DataService,
+              private router:Router) { 
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
@@ -29,48 +33,33 @@ export class ArticulosFiltradosComponent implements OnInit  {
         this.router.navigated = false;
       }
     });
-    this.articulos=new Array();
   }
 
-  
-
-  ngOnInit() {
+  ngAfterViewInit() {
     this.data.currentMessage.subscribe(message => this.categoria = message)
     console.log("recibido="+this.categoria);
-    this.GetData();
-    
-    console.log("entra en on init");
-    
-    
-    
+    this.GetData();  
   }
 
   GetData() {
     this.articuloServicio.getArticulos()
       .subscribe(data => {
-
-
         this.articulos2 = data;
         console.log(this.articulos);
         this.addurl();
-
-        for(let articulo of this.articulos2){
-          if(articulo.id_categoria==this.categoria){
-            
-            this.articulos.push(articulo);
+        if (this.categoria !== '') {
+          for(let articulo of this.articulos2){
+            if(articulo.categoria.nombre==this.categoria){
+              this.articulos.push(articulo);
+            }
           }
+        } else {
+          this.articulos = this.articulos2;
         }
-        
-        console.log(this.categoria);
-        
-        
-      },(error)=>{console.log(error);
-        
-      
-        //console.log(result)
-      });
-    
+      },
+      (error)=>{console.log(error);});
   }
+  
   addurl(){
     if(this.articulos!=null){
       for(let articulo of this.articulos){
@@ -80,17 +69,13 @@ export class ArticulosFiltradosComponent implements OnInit  {
         }
       }
     }
-    
   }
 
 
   probar(){
-    //this.GetData();
-    
     console.log(this.articulos);
   }
 
-  
   ngOnDestroy() {
     if (this.mySubscription) {
       this.mySubscription.unsubscribe();

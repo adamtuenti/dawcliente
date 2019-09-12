@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 import { ArticuloService } from '../../providers/articulo/articulo.service'
 import { NgxNavigationWithDataComponent } from 'ngx-navigation-with-data';
 import { DataService } from "../../data-service.service";
 import { Router } from '@angular/router';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-header',
@@ -12,18 +13,18 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  
   isShown:boolean = false;
   categorias;
   rol;
   usuario;
   message;
-  categoria;
+  categoria = '';
 
-  constructor(private articuloServicio: ArticuloService, private navCtrl:NgxNavigationWithDataComponent,private data: DataService, private router:Router) { 
+
+  constructor(private articuloServicio: ArticuloService, 
+              private navCtrl:NgxNavigationWithDataComponent,
+              private data: DataService, private router:Router) { 
     this.rol=0;
-
-
   }
 
   ngOnInit() {
@@ -43,7 +44,6 @@ export class HeaderComponent implements OnInit {
     this.articuloServicio.getCategorias().subscribe(data => {
         this.categorias = data;
         console.log(this.categorias);
-        
       });
   }
   probar(){
@@ -59,19 +59,17 @@ export class HeaderComponent implements OnInit {
   }
 
   categoriaSelect(categoria){
-    console.log(categoria);
     this.categoria=categoria;
-    this.newMessage(categoria.id_categoria);
-
+    this.newMessage(categoria);
+    //console.log(this.newMessage);
     this.router.navigateByUrl('/articulos_filtrados', {skipLocationChange: true}).then(()=>
     this.router.navigate(["articulos_filtrados"]));
     
-    //window.location.reload();
+    // window.location.reload();
   }
 
-  newMessage(categoria_id) {
-    
-    this.data.changeMessage(categoria_id)
+  newMessage(categoria) {
+    this.data.changeMessage(categoria.nombre);
   }
 
   

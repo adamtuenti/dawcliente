@@ -11,11 +11,11 @@ export class ArticuloService {
   constructor( private http:HttpClient) { }
 
   getCategorias(){
-    return this.http.get<any[]>(this.apiUrl+'categorias/?format=json')
+    return this.http.get<any[]>(this.apiUrl+'categorias/')
   }
 
   getArticulos(){
-    return this.http.get<any[]>(this.apiUrl+'todosLosArticulos/?format=json')
+    return this.http.get<any[]>(this.apiUrl+'api/articulos/')
   }
 
   postContact(postData) {    

@@ -24,10 +24,8 @@
 		
 								<a class="nav-link dropdown-toggle waves-light"  id="navbarDropdownMenuLink" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false">Categorías</a>
-									<div class="dropdown-menu dropdown dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-						
+									<div class="dropdown-menu dropdown dropdown-primary" aria-labelledby="navbarDropdownMenuLink">						
 											<a *ngFor="let categoria of categorias" class="dropdown-item waves-light"  (click)="categoriaSelect(categoria)">{{categoria.nombre}}</a>
-										
 									</div> 
 				
 								</div>
