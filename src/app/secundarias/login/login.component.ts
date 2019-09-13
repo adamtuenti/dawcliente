@@ -20,38 +20,20 @@ export class LoginComponent implements OnInit {
   }
 
   buscarUsuario(f: NgForm) {
-    
-    
-    console.log(f.value);
-
-    
-    
     this.res=this.articuloServicio.postComprobarUsuario(f.value);
     this.res.subscribe(data => {
       console.log(data);
-      window.location.reload();
-
-
-      localStorage.setItem('id_usuario', data.id_usuario);
-      localStorage.setItem('id_rol', data.id_rol);
-      if(data.id_rol==1){
-
+      // window.location.reload();
+      localStorage.setItem('id', data.id); // id usuario
+      localStorage.setItem('rol', data.perfil.rol);
+      if(data.perfil.rol==='COM'){
         this.router.navigate(['/']);
-      }else if(data.id_rol==2){
-        this.router.navigate(['/mis_productos'])
-      }else if(data.id_rol==3){
-        window.location.href = 'http://localhost:8000/admin/';		  
-
+      }else if(data.perfil.rol=='VEN'){
+        this.router.navigate(['/mis_productos']);
       }
-     
-
-      
-
      }, error => {
         this.erroneos=true;
-
       console.log(error);
     });
-
   }
 }
