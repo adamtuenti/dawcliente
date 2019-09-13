@@ -19,10 +19,11 @@ export class MisProductosComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.GetData();
-    
-    console.log("entra en on init");
-    
+    if (localStorage.getItem('rol')==='VEN') {
+      this.GetData();
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 
   GetData() {

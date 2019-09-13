@@ -17,18 +17,26 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit() {
+    if (localStorage.getItem('rol')==='COM'){
+      this.router.navigate(['/']);
+    }else if(localStorage.getItem('rol')==='VEN'){
+      this.router.navigate(['/mis_productos']);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
   buscarUsuario(f: NgForm) {
     this.res=this.articuloServicio.postComprobarUsuario(f.value);
     this.res.subscribe(data => {
       console.log(data);
-      // window.location.reload();
-      localStorage.setItem('id', data.id); // id usuario
+      window.location.reload();
+      localStorage.setItem('id_usuario', data.id); // id usuario
       localStorage.setItem('rol', data.perfil.rol);
+      localStorage.setItem('username', data.username);
       if(data.perfil.rol==='COM'){
         this.router.navigate(['/']);
-      }else if(data.perfil.rol=='VEN'){
+      }else if(data.perfil.rol==='VEN'){
         this.router.navigate(['/mis_productos']);
       }
      }, error => {

@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
   usuario;
   message;
   categoria = '';
+  username = '';
 
 
   constructor(private articuloServicio: ArticuloService, 
@@ -32,8 +33,9 @@ export class HeaderComponent implements OnInit {
     this.data.currentMessage.subscribe(message => this.message = message)
     
     this.GetData();
-    this.rol=localStorage.getItem("id_rol");
+    this.rol=localStorage.getItem("rol");
     this.usuario=localStorage.getItem("id_usuario");
+    this.username=localStorage.getItem('username');
   
     console.log(this.usuario);
     console.log(this.rol);
@@ -53,9 +55,9 @@ export class HeaderComponent implements OnInit {
   cerrarSesion(){
     this.usuario=0;
     this.rol=0;
-    localStorage.setItem("id_usuario","0");
-    localStorage.setItem("id_rol","0");
-
+    localStorage.removeItem("id_usuario");
+    localStorage.removeItem("rol");
+    window.location.reload();
   }
 
   categoriaSelect(categoria){

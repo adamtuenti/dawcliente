@@ -51,7 +51,7 @@
 				</ul>
 
 
-				<div *ngIf="usuario!=0; else loggedOut">
+				<div *ngIf="usuario; else loggedOut">
 
 								<ul class="navbar-nav mr-auto">		
 										<li class="nav-item">
@@ -62,7 +62,7 @@
 					
 					
 													<a class="nav-link dropdown-toggle waves-light"  id="navbarDropdownMenuLink" data-toggle="dropdown"
-														aria-haspopup="true" aria-expanded="false">Perfil</a>
+														aria-haspopup="true" aria-expanded="false">{{ username }}</a>
 													<div class="dropdown-menu dropdown-menu-right dropdown-primary">
 													  <a class="dropdown-item" routerLink="/login" (click)="cerrarSesion()">Cerrar Sesión</a>
 													  
@@ -75,15 +75,14 @@
 										</li>
 									</ul>
 						
-				</div><ng-template #loggedOut>
-
-						
-								<ul class="navbar-nav mr-auto">		
+				</div>
+				<ng-template #loggedOut>
+					<ul class="navbar-nav mr-auto">		
 										<li class="nav-item">
 												<a class="nav-link">
 												  <div class="btn-group" mdbDropdown>
 													<a class="nav-link dropdown-toggle waves-light"  id="navbarDropdownMenuLink" data-toggle="dropdown"
-														aria-haspopup="true" aria-expanded="false">Perfil</a>
+														aria-haspopup="true" aria-expanded="false">Acciones</a>
 													<div class="dropdown-menu dropdown-menu-right dropdown-primary">
 													  <a class="dropdown-item" routerLink="/login">Acceder</a>
 													  <a class="dropdown-item" routerLink="/sign">Registro</a>

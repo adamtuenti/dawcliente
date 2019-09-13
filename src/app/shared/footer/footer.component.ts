@@ -9,7 +9,14 @@ export class FooterComponent implements OnInit {
 
   constructor() { }
 
+  id_usuario = '';
+
   ngOnInit() {
+    this.id_usuario = this.readLocalStorageUser();
+  }
+
+  readLocalStorageUser(): string {
+    return localStorage.getItem('id_usuario') ? localStorage.getItem('id_usuario') : '';
   }
 
 }
