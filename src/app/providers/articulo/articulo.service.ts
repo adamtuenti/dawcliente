@@ -37,7 +37,7 @@ export class ArticuloService {
         { 'Content-Type': 'application/json' }
         ) 
     };
-    return this.http.post(this.apiUrl+"usuario/",postData,private_options);
+    return this.http.post(this.apiUrl+"api/usuarios/",postData,private_options);
   }
 
   getBuscarUsuario(cedula){

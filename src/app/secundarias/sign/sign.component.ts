@@ -23,30 +23,27 @@ export class SignComponent implements OnInit {
     console.log(f.value);
 
     let postData ={
-      "cedula": f.value.cedula,
-      "contrasenia": f.value.contrasenia,
-      "nombres": f.value.nombres,
-      "apellidos": f.value.apellidos,
       "email": f.value.email,
-      "direccion": f.value.direccion,
-      "id_rol": f.value.rol
+      "first_name": f.value.nombres,
+      "last_name": f.value.apellidos,
+      "username": f.value.username,
+      "password": f.value.contrasenia,
+      "perfil": {
+        "direccion": f.value.direccion,
+        "rol": f.value.rol,
+        "cedula": f.value.cedula
+      }
     }
     
     this.res=this.articuloServicio.postUsuario(postData);
     this.res.subscribe(data => {
       console.log(data);
       if(data!=null){
-
+        this.router.navigateByUrl('/login')
       }
-
-      
-
      }, error => {
       console.log(error);
     });
-
-
-    this.router.navigateByUrl('/login')
 
   }
 
