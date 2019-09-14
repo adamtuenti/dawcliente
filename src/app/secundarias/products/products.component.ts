@@ -23,53 +23,38 @@ export class ProductsComponent implements OnInit {
   }
 
   onFileChanged(event) {
-    const file = event.target.files[0]
-    var reader = new FileReader();
-    /*reader.readAsDataURL(file);
-    reader.onload = (_event) => { 
-      this.imagen = reader.result; 
-    }*/
-    //this.imagenData=file;
-    /*reader.onload = (function(theFile) {
-      return function(e) {
-        var binaryData = e.target.result;
-        //Converting Binary Data to base 64
-        var base64String = window.btoa(binaryData);
-        this.imagen=base64String;
+    let reader = new FileReader();
+    let me = this;
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      // this.imagen = file;
+      reader.readAsDataURL(file);
+      reader.onload = function () {
+        //me.modelvalue = reader.result;
+        console.log(reader.result);
+        me.imagen = reader.result;
+          };
+      reader.onerror = function (error) {
+        console.log('Error: ', error);
       };
-    })(file);*/
-
-    //reader.readAsBinaryString(file);
-    //this.imagen = window.btoa(file);
-    this.imagenNombre=file.name;
-    reader.onloadend = (e) => {
-      this.imagen = reader.result;
-      this.imagen=this.imagen.replace(/^data:image.+;base64,/, '');
     }
-    reader.readAsDataURL(file);
-    
-    //this.imagen=(this.imagen.split(','))[1];
-
-    /*let postdata={
-      imagen:this.imagen,
-      imagen_nombre:this.imagenNombre
-    }*/
-    
   }
 
   GetData() {
     this.articuloServicio.getCategorias().subscribe(data => {
         this.categorias = data;
-        console.log(this.categorias)
-        
+        console.log(this.categorias);
       });
   }
 
   onSubmit(f){
     let postdata=f.value;
-    postdata.imagen=this.imagen;
-    postdata.imagen_nombre=this.imagenNombre;
-    postdata.id_usuario=localStorage.getItem("id_usuario");
+    postdata.imagen={'imagen': this.imagen};
+    // postdata.imagen_nombre=this.imagenNombre;
+    postdata.usuario=+localStorage.getItem("id_usuario");
+    postdata.categoria=+postdata.categoria;
+    postdata.precio=+postdata.precio;
+    postdata.donacion=+postdata.donacion;
     console.log(postdata);
     this.articuloServicio.postNuevoArticulo(postdata)
     .subscribe(res=>{
@@ -77,6 +62,7 @@ export class ProductsComponent implements OnInit {
       this.router.navigateByUrl('/mis_productos')
     },(error=>{
       console.log(error);
+      alert('Error, verifique la informacion ingresada');
     }));
 
   }

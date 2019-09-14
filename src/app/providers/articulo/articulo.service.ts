@@ -74,7 +74,7 @@ export class ArticuloService {
         { 'Content-Type': 'application/json' }
         ) 
     };
-    return this.http.post(this.apiUrl+"articulosComprador/",postData,private_options);
+    return this.http.post<any>(this.apiUrl+"api/articulos/",postData);
   }
   
 }

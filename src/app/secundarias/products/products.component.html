@@ -20,10 +20,10 @@
 		<input type="float" id="precio" class="form-control mb-4" placeholder="Precio" name="precio" ngModel ng-required="myVar">
 
 
-		<select class="browser-default custom-select mb-4" name="id_categoria" ngModel ng-required="myVar">
+		<select class="browser-default custom-select mb-4" name="categoria" ngModel ng-required="myVar">
 				<option value="" disabled>Seleccione categoria</option>
 				
-				<option *ngFor="let categoria of categorias" value="{{categoria.id_categoria}}">{{categoria.nombre}}</option>
+				<option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.nombre}}</option>
 		</select>
 
 		<div>
