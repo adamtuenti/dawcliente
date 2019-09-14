@@ -64,8 +64,8 @@
 													<a class="nav-link dropdown-toggle waves-light"  id="navbarDropdownMenuLink" data-toggle="dropdown"
 														aria-haspopup="true" aria-expanded="false">{{ username }}</a>
 													<div class="dropdown-menu dropdown-menu-right dropdown-primary">
+													  <a class="dropdown-item" routerLink="/mis_productos" *ngIf="rol==='VEN'">Mis Productos</a>
 													  <a class="dropdown-item" routerLink="/login" (click)="cerrarSesion()">Cerrar Sesión</a>
-													  
 													</div>
 					
 													  
