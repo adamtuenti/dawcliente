@@ -38,15 +38,12 @@ export class MisProductosComponent implements OnInit {
   }
 
   elimiarArticulo(articulo){
-    console.log("eliminar");
-    this.articuloServicio.deleteArticulo(articulo.id_articulo)
+    console.log(articulo);
+    this.articuloServicio.deleteArticulo(articulo.id)
     .subscribe(data => {
       console.log(data);
-      window.location.reload();
+      this.GetData();
     },(error)=>{console.log(error);
-      
-    
-      //console.log(result)
     });
 
   }
@@ -55,11 +52,7 @@ export class MisProductosComponent implements OnInit {
 
 
   gotoActualizar(articulo){
-
     this.navCtrl.navigate('actualizar_articulo', {articulo:articulo});
-    //this.router.navigate(['/actualizar_articulo'], { state: { nombre: articulo.nombre } });
-    
-    //this.router.navigateByUrl('/123', { state: { data: articulo } });
   }
 
 }

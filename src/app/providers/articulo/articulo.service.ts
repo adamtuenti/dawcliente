@@ -59,30 +59,15 @@ export class ArticuloService {
   }
 
   deleteArticulo(id_articulo){
-    /*let private_options = { 
-      headers: new HttpHeaders(
-        { 'Content-Type': 'application/json' }
-        ) 
-    };*/
     console.log(id_articulo);
-    return this.http.delete(this.apiUrl+"articulosComprador/?id_articulo="+id_articulo/*,private_options*/);
+    return this.http.delete(this.apiUrl+"api/articulos/"+id_articulo+'/');
   }
 
   postNuevoArticulo(postData){
-    let private_options = { 
-      headers: new HttpHeaders(
-        { 'Content-Type': 'application/json' }
-        ) 
-    };
     return this.http.post<any>(this.apiUrl+"api/articulos/",postData);
   }
   
   editArticulo(postData, id){
-    let private_options = { 
-      headers: new HttpHeaders(
-        { 'Content-Type': 'application/json' }
-        ) 
-    };
     return this.http.put<any>(this.apiUrl+"api/articulos/" + id +'/',postData);
   }
   
