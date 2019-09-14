@@ -14,11 +14,11 @@ export class ActualizarArticuloComponent implements OnInit {
   descrip  = new FormControl('');
   donacion  = new FormControl('');
   precio  = new FormControl('');
-  id_categoria  = new FormControl('');
+  categoria  = new FormControl('');
   message:string;
   articulo;
   imagenNombre: any;
-  imagen: any;
+  imagen: any = null;
   categorias: any[];
   form;
 
@@ -31,38 +31,33 @@ export class ActualizarArticuloComponent implements OnInit {
   ngOnInit() {
     console.log("entra !!!!!!!!!!!!")
     
-
-    //console.log(this.navCtrl.get('nombre'));
     this.articulo=this.navCtrl.get('articulo')
 
-    //this.articulo=history.state.nombre
-    //console.log("hola      "+this.router.getCurrentNavigation().extras.state.nombre)
-    //console.log(this.articulo);
     this.GetData();
+    console.log(this.articulo);
     this.nombre.setValue(this.articulo.nombre);
     this.descrip.setValue(this.articulo.descrip);
-    this.id_categoria.setValue(this.articulo.id_categoria);
+    this.categoria.setValue(this.articulo.categoria.id);
     this.precio.setValue(this.articulo.precio);
     this.donacion.setValue(this.articulo.donacion);
-    
-    
-    
-
   }
 
   onFileChanged(event) {
-    const file = event.target.files[0]
-    var reader = new FileReader();
-    
-    this.imagenNombre=file.name;
-    reader.onloadend = (e) => {
-      this.imagen = reader.result;
-      this.imagen=this.imagen.replace(/^data:image.+;base64,/, '');
+    let reader = new FileReader();
+    let me = this;
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      // this.imagen = file;
+      reader.readAsDataURL(file);
+      reader.onload = function () {
+        //me.modelvalue = reader.result;
+        console.log(reader.result);
+        me.imagen = reader.result;
+          };
+      reader.onerror = function (error) {
+        console.log('Error: ', error);
+      };
     }
-    reader.readAsDataURL(file);
-    
-    
-    
   }
 
   GetData() {
@@ -81,24 +76,27 @@ export class ActualizarArticuloComponent implements OnInit {
       descrip  : this.descrip.value,
       donacion  : parseFloat(this.donacion.value),
       precio  : parseFloat(this.precio.value),
-      id_categoria  : this.id_categoria.value,
-      imagen: this.imagen,
-      imagen_nombre: this.imagenNombre,
-      id_usuario: parseInt(localStorage.getItem("id_usuario")),
-      id_articulo: this.articulo.id_articulo
-
+      categoria  : this.categoria.value,
+      usuario: parseInt(localStorage.getItem("id_usuario"))
     };
-    console.log(postdata);
-    this.articuloServicio.postNuevoArticulo(postdata)
+
+    postdata['imagen'] = this.imagen !== null ? {'imagen':this.imagen} : null;
+    if (postdata['imagen'] === null) {
+      delete postdata['imagen'];
+    } 
+    console.log(postdata, this.articulo.id);
+    
+    this.articuloServicio.editArticulo(postdata, this.articulo.id)
     .subscribe(res=>{
       console.log(res);
+      this.router.navigateByUrl('/mis_productos');
     },(error=>{
       console.log(error);
+      alert(error);
     }));
 
-    window.location.reload();
+    // window.location.reload();
 
-    this.router.navigateByUrl('/mis_productos');
 
   }
 

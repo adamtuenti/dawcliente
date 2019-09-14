@@ -28,48 +28,24 @@
 	</div>
 
 	<div>
-
-		<select class="browser-default custom-select mb-4" [formControl] ="id_categoria">
-				<option value="" disabled>Seleccione categoria</option>
-				
-
-				<option *ngFor="let categoria of categorias" value="{{categoria.id_categoria}}" >{{categoria.nombre}}</option>
+		<select class="browser-default custom-select mb-4" [formControl] ="categoria">
+			<option value="" disabled>Seleccione categoria</option>
+			<option *ngFor="let categoria of categorias" value="{{categoria.id}}" >{{categoria.nombre}}</option>
 		</select>
-
 	</div>
 	<div>
-		
 		<input type="file" (change)="onFileChanged($event)"> 
-
 	</div>
-
-	
-  
-		
-		<!-- Newsletter -->
-		
-  
-		<!-- Sign up button -->
 		<br>
-
 		<div>
-				
-				<button class="btn btn-success btn block boton" (click)="actualizar()">Actualizar</button>
-				
-			</div>
-			<div>
-                <button routerLink="/misArticulos" class="btn btn-warning boton" block="true" type="submit">Cancelar</button>
+			<button class="btn btn-success btn block boton" (click)="actualizar()">Actualizar</button>
 		</div>
-		
-		<!-- Social register -->
-		
-  
+		<div>
+            <button routerLink="/mis_productos" class="btn btn-warning boton" block="true" type="submit">Cancelar</button>
+		</div>
 		<hr>
-  
-		<!-- Terms of service -->
 		<p>Gracias por permanecer con nosotros
 		  <a routerLink="/about" target="_blank">Acerca de nosotros</a></p>
-  
 </div>
 
 

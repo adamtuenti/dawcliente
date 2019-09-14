@@ -77,4 +77,13 @@ export class ArticuloService {
     return this.http.post<any>(this.apiUrl+"api/articulos/",postData);
   }
   
+  editArticulo(postData, id){
+    let private_options = { 
+      headers: new HttpHeaders(
+        { 'Content-Type': 'application/json' }
+        ) 
+    };
+    return this.http.put<any>(this.apiUrl+"api/articulos/" + id +'/',postData);
+  }
+  
 }

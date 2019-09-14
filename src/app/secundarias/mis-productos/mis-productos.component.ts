@@ -31,22 +31,9 @@ export class MisProductosComponent implements OnInit {
       .subscribe(data => {
         this.articulos = data;
         console.log(this.articulos);
-        this.addurl();
+        // this.addurl();
       },(error)=>{console.log(error);
-        
-      
-        //console.log(result)
       });
-    
-  }
-  addurl(){
-    if(this.articulos!=null){
-      for(let articulo of this.articulos){
-        for(let imagen of articulo.imagenes){
-          imagen.imagen= this.urlweb+imagen.imagen;
-        }
-      }
-    }
     
   }
 
