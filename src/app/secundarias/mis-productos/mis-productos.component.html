@@ -1,33 +1,55 @@
-<h3 id='titulo'>Mis artículos en venta</h3>
+<h3 id='titulo' *ngIf="rol==='VEN'">Mis artículos en venta</h3>
+<h3 id='titulo' *ngIf="rol==='COM'">Mi carrito</h3>
 <hr class="soften"/>
 
-<div   *ngIf="articulos?.length>0; else noHay">
-        <div   *ngFor="let articulo of articulos" class="col-sm-6 card contenedor">
-                <h4>{{articulo?.nombre}}</h4>     
+<div *ngIf="rol==='VEN'">
+    <div *ngIf="articulos?.length>0; else noHay">
+        <div *ngFor="let articulo of articulos" class="col-sm-6 card contenedor">
+            <h4>{{articulo?.nombre}}</h4>     
             <img class= 'imageclass' [src]="articulo.imagenes[0].imagen" alt="..">
-            
+                
             <p class="price">$ {{articulo?.precio}}</p>
             <p>{{articulo?.descrip}}</p>
             <div  style="float: left">
-            <p class="botones_elim_actual"><button class="btn btn-danger boton" (click)="elimiarArticulo(articulo)" >Eliminar</button></p>
-            
-          
-            <p class="botones_elim_actual"><button class="btn btn-success boton"  (click)="gotoActualizar(articulo)" block="true" >Actualizar</button></p>
-            </div>
-                
+                <p class="botones_elim_actual"><button class="btn btn-danger boton" (click)="elimiarArticulo(articulo)" >Eliminar</button></p>
+                <p class="botones_elim_actual"><button class="btn btn-success boton"  (click)="gotoActualizar(articulo)" block="true" >Actualizar</button></p>
+            </div>                
         </div>
+    </div>
 
-
+    <ng-template #noHay>
+        <div id='content'>
+            <div>
+                <h2 id='texto'>Ups! No tienes ningun artículo en venta!</h2>
+                <img id = 'imagenohay' src="https://st.depositphotos.com/1001291/4520/v/950/depositphotos_45200757-stock-illustration-cartoon-oops-with-rays.jpg" alt=".." >
+            </div>
+            <button routerLink="/products" class="btn btn-success btn block" block="true" type="submit" ng-model="myVar">Subir artículo</button>
+        
+        </div> 
+    </ng-template>  
 </div>
 
-<ng-template #noHay>
-    <div id='content'>
-        <div>
-    <h2 id='texto'>Ups! No tienes ningun artículo en venta!</h2>
-    <img id = 'imagenohay' src="https://st.depositphotos.com/1001291/4520/v/950/depositphotos_45200757-stock-illustration-cartoon-oops-with-rays.jpg" alt=".." >
+<div *ngIf="rol==='COM'">
+        <div *ngIf="carrito?.length>0; else noHay">
+            <div *ngFor="let articulo of carrito" class="col-sm-6 card contenedor">
+                <h4>{{articulo?.nombre}}</h4>     
+                <img class= 'imageclass' [src]="articulo.imagenes[0].imagen" alt="..">
+                    
+                <p class="price">$ {{articulo?.precio}}</p>
+                <p>{{articulo?.descrip}}</p>
+                <div>
+                    <button class="btn-danger btn" (click)="eliminarDelCarrito(articulo)" >Eliminar del carrito</button>
+                </div>                
+            </div>
         </div>
-    <button routerLink="/products" class="btn btn-success btn block" block="true" type="submit" ng-model="myVar">Subir artículo</button>
     
-    </div>
-   
-</ng-template>  
+        <ng-template #noHay>
+            <div id='content'>
+                <div>
+                    <h2 id='texto'>Ups! No tienes ningun artículo en tu carrito!</h2>
+                    <img id = 'imagenohay' src="https://st.depositphotos.com/1001291/4520/v/950/depositphotos_45200757-stock-illustration-cartoon-oops-with-rays.jpg" alt=".." >
+                </div>
+                
+            </div> 
+        </ng-template>  
+</div>

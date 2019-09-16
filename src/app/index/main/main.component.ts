@@ -53,6 +53,6 @@ export class MainComponent implements OnInit {
         );
       }, (error) => console.log(error)
     );
-  }
+  } 
 
 }
