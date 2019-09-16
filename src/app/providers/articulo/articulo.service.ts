@@ -71,4 +71,12 @@ export class ArticuloService {
     return this.http.put<any>(this.apiUrl+"api/articulos/" + id +'/',postData);
   }
   
+  addToCart(postData, id){
+    return this.http.put<any>(this.apiUrl+"api/carrito/" + id + '/', postData);
+  }
+
+  getCarrito(id){
+    return this.http.get(this.apiUrl+"api/carrito/" + id + "/");
+  }
+
 }
