@@ -41,7 +41,6 @@ export class ArticuloService {
   }
 
   getBuscarUsuario(cedula){
-    
     return this.http.get(this.apiUrl+"buscarUsuario/?cedula="+cedula);
   }
 
@@ -81,6 +80,10 @@ export class ArticuloService {
 
   getPagos() {
     return this.http.get(this.apiUrl + 'api/pago/')
+  }
+
+  getUsuarios() {
+    return this.http.get(this.apiUrl + 'api/usuarios/');
   }
 
 }

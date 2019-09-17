@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticuloService } from 'src/app/providers/articulo/articulo.service';
+import { Router, NavigationEnd } from '@angular/router';
+
 
 @Component({
   selector: 'app-admin-user',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminUserComponent implements OnInit {
 
-  constructor() { }
+  usuarios = [];
+  constructor(private articuloServicio: ArticuloService, 
+    private router:Router) { }
 
   ngOnInit() {
+    this.getUsuarios();
+  }
+
+  getUsuarios() {
+    this.articuloServicio.getUsuarios().subscribe(
+      data => {
+        this.usuarios = data;
+        console.log(data);
+      }
+    )
   }
 
 }
