@@ -35,13 +35,13 @@ export class UsuariosFechaComponent implements OnInit {
 
   title = 'Graficos';
 
-  view: any[] = [600, 400];
+  view: any[] = [600, 400]; // dimensiones
 
   // options for the chart
 
-  showXAxis = true;
+  showXAxis = true; 
 
-  showYAxis = true;
+  showYAxis = true; 
 
   gradient = false;
 
