@@ -66,6 +66,7 @@
 													<div class="dropdown-menu dropdown-menu-right dropdown-primary">
 													  <a class="dropdown-item" routerLink="/mis_productos" *ngIf="rol==='VEN'">Mis Productos</a>
 													  <a class="dropdown-item" routerLink="/mis_productos" *ngIf="rol==='COM'">Mi Carrito</a>
+													  <a class="dropdown-item" routerLink="/admin" *ngIf="rol==='ADM'">Administracion</a>
 													  <a class="dropdown-item" routerLink="/login" (click)="cerrarSesion()">Cerrar Sesión</a>
 													</div>
 					

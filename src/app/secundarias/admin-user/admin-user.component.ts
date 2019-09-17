@@ -10,7 +10,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AdminUserComponent implements OnInit {
 
-  usuarios = [];
+  usuarios: any = [];
   constructor(private articuloServicio: ArticuloService, 
     private router:Router) { }
 

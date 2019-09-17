@@ -2,18 +2,84 @@
 	<!-- Header ================================================================== -->
 	<div id="header"></div>
 
-	<!-- Section body ================================================================== -->
-	<section>
-		<h1>Cantidad de Usuarios registrados</h1>
-		<div id="my_dataviz"></div>
+<div style="text-align:center">
+		<h1 class="card-header bg-info">
+		  Bienvenido a {{ title }}!
+		</h1>
+		<h3 class="text-secondary">
+		  Estadisticas sobre nuestra Web!
+		</h3>
+		<div class="row ml-5">
+		  	<div class="col">
+			  <div class="row">
+				<h4>
+				  Cantidad de usuarios por tipo
+				</h4>
+			  </div>
+			  <div class="row">
+	  			<ngx-charts-bar-vertical
+	  				[view]="view"
+	  				[scheme]="colorScheme"
+	  				[results]="dataUsuarios"
+	  				[gradient]="gradient"
+	  				[xAxis]="showXAxis"
+	  				[yAxis]="showYAxis"
+	  				[legend]="showLegend"
+	  				[showXAxisLabel]="showXAxisLabel"
+	  				[showYAxisLabel]="showYAxisLabel"
+	  				[xAxisLabel]="xAxisLabelUsers"
+	  				[yAxisLabel]="yAxisLabelUsers">
+	  				</ngx-charts-bar-vertical>
+	  		  </div>
+	  		</div>
+		  	<div class="col">
+			  <div class="row">
+				<h4>
+				  Cantidad de articulos vendidos por categoria
+				</h4>
+			  </div>
+			  <div class="row">
+	  			<ngx-charts-bar-vertical
+	  				[view]="view"
+	  				[scheme]="colorScheme"
+	  				[results]="dataCantidadCategorias"
+	  				[gradient]="gradient"
+	  				[xAxis]="showXAxis"
+	  				[yAxis]="showYAxis"
+	  				[legend]="showLegend"
+	  				[showXAxisLabel]="showXAxisLabel"
+	  				[showYAxisLabel]="showYAxisLabel"
+	  				[xAxisLabel]="xAxisLabelCategorias"
+	  				[yAxisLabel]="yAxisLabelNumeroVendidos">
+	  				</ngx-charts-bar-vertical>
+	  		  </div>
+	  		</div>
+		  	<div class="col">
+			  <div class="row">
+				<h4>
+				  Ventas en dolares por categoria
+				</h4>
+			  </div>
+			  <div class="row">
+	  			<ngx-charts-bar-vertical
+	  				[view]="view"
+	  				[scheme]="colorScheme"
+	  				[results]="dataVentasCategorias"
+	  				[gradient]="gradient"
+	  				[xAxis]="showXAxis"
+	  				[yAxis]="showYAxis"
+	  				[legend]="showLegend"
+	  				[showXAxisLabel]="showXAxisLabel"
+	  				[showYAxisLabel]="showYAxisLabel"
+	  				[xAxisLabel]="xAxisLabelCategorias"
+	  				[yAxisLabel]="yAxisLabelVentas">
+	  				</ngx-charts-bar-vertical>
+	  		  </div>
+	  		</div>
+		</div>
+</div>
+	<div id="my_dataviz"></div>
 
-		<a routerLink="/reportes"><img src="https://github.com/AngelJumbo/DAW_BuyAndHelp/blob/master/bootstrap-shop/administrador/html/themes/images/administrador/back_button.png?raw=true" id="back_button" alt="boton de retroceso"></a>
+	<a routerLink="/reportes"><img src="https://github.com/AngelJumbo/DAW_BuyAndHelp/blob/master/bootstrap-shop/administrador/html/themes/images/administrador/back_button.png?raw=true" id="back_button" alt="boton de retroceso"></a>
 
-	</section>
-
-	<!-- Footer ================================================================== -->
-	<div  id="footer"></div>
-
-
-    <script src="js/usuarios_fecha.js"></script>
 </body>

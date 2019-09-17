@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxNavigationWithDataComponent } from "ngx-navigation-with-data";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { ArticuloService } from './providers/articulo/articulo.service';
 
@@ -56,7 +58,7 @@ const rutas: Routes = [
   { path: 'lista_productos', component: ListaProductosComponent },
   { path: 'lista_ventas', component: ListaVentasComponent },
   { path: 'lista_mascotas', component: ListaVentasComponent },
-  { path: 'usuarios_fecha', component: UsuariosFechaComponent },
+  { path: 'graficos', component: UsuariosFechaComponent },
   { path: 'productos_categoria', component: ProductosCategoriaComponent },
   { path: 'ventas_pordia', component: VentasPordiaComponent },
   { path: 'sign', component: SignComponent },
@@ -67,9 +69,50 @@ const rutas: Routes = [
 ];
 
 @NgModule({
-  providers:    [ ArticuloService,NgxNavigationWithDataComponent, DataService],
-  imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(rutas),HttpClientModule,MDBBootstrapModule.forRoot(),ReactiveFormsModule ],
-  declarations: [ AppComponent, HeaderComponent, FooterComponent, MainComponent, ProductsComponent, AboutComponent, LoginComponent, ContactComponent, AdminComponent, AdminUserComponent, GestionComponent, ReportesComponent, PanelControlComponent, MascotaspublicadasComponent, HistorialSolicitudesComponent, ListaMascotasComponent, ListaProductosComponent, ListaVentasComponent, ProductosCategoriaComponent, SolicitudesVentaComponent, UsuariosFechaComponent, VentasPordiaComponent, SignComponent, AdoptaComponent, MisProductosComponent, ActualizarArticuloComponent, ArticulosFiltradosComponent ],
+  providers:    [ 
+    ArticuloService,
+    NgxNavigationWithDataComponent, 
+    DataService
+  ],
+  imports:      [ 
+    BrowserModule, 
+    FormsModule, 
+    RouterModule.forRoot(rutas),
+    HttpClientModule,
+    MDBBootstrapModule.forRoot(),
+    ReactiveFormsModule,
+    NgxChartsModule,
+    BrowserAnimationsModule
+  ],
+  declarations: [ 
+    AppComponent, 
+    HeaderComponent, 
+    FooterComponent, 
+    MainComponent, 
+    ProductsComponent, 
+    AboutComponent, 
+    LoginComponent, 
+    ContactComponent, 
+    AdminComponent, 
+    AdminUserComponent, 
+    GestionComponent, 
+    ReportesComponent, 
+    PanelControlComponent, 
+    MascotaspublicadasComponent,
+    HistorialSolicitudesComponent, 
+    ListaMascotasComponent, 
+    ListaProductosComponent, 
+    ListaVentasComponent, 
+    ProductosCategoriaComponent, 
+    SolicitudesVentaComponent, 
+    UsuariosFechaComponent, 
+    VentasPordiaComponent, 
+    SignComponent, 
+    AdoptaComponent, 
+    MisProductosComponent, 
+    ActualizarArticuloComponent, 
+    ArticulosFiltradosComponent 
+  ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

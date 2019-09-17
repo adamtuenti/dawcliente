@@ -86,4 +86,12 @@ export class ArticuloService {
     return this.http.get(this.apiUrl + 'api/usuarios/');
   }
 
+  getEstadisticasUsuarios() {
+    return this.http.get(this.apiUrl + 'api/cantidadusuarios/');
+  }
+
+  getEstadisticasCategorias() {
+    return this.http.get(this.apiUrl + 'api/estadisticasarticuloscategorias/');
+  }
+
 }
