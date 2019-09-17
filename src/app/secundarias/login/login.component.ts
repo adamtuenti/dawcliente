@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/']);
     }else if(localStorage.getItem('rol')==='VEN'){
       this.router.navigate(['/mis_productos']);
+    } else if(localStorage.getItem('rol')==='ADM'){
+      this.router.navigate(['/admin']);
     } else {
       this.router.navigate(['/login']);
     }

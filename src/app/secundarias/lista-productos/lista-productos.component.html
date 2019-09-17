@@ -12,71 +12,11 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr class="success">
-				      <th scope="row" >001</th>
-				      <td>Zapatos de Cuero</td>
-				      <td>$25,00</td>
-				      <td>Julio Aguirre</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">002</th>
-				      <td>Nombre</td>
-				      <td>$40,00</td>
-				      <td>Axel Tuarez</td>
-				    </tr>
-				    <tr class="success">
-				      <th scope="row">003</th>
-				      <td>Nombre</td>
-				      <td>$23,00</td>
-				      <td>Marlee Pinargote</td>
-				    </tr>
-				    <tr >
-				      <th scope="row">004</th>
-				      <td>Nombre</td>
-				      <td>$5,00</td>
-				      <td>Valeria Baek</td>
-				    </tr>
-				    <tr class="success">
-				      <th scope="row">005</th>
-				      <td>Nombre</td>
-				      <td>$12,00</td>
-				      <td>Justin Chilan</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">006</th>
-				      <td>Nombre</td>
-				      <td>$45,00</td>
-				      <td>Claudia Zambrano</td>
-				    </tr>
-				    <tr class="success">
-				      <th scope="row">007</th>
-				      <td>Nombre</td>
-				      <td>$30,00</td>
-				      <td>Rodrigo Dominguez</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">008</th>
-				      <td>Nombre</td>
-				      <td>$7,00</td>
-				      <td>Sebastián Bolivar</td>
-				    </tr>
-				    <tr class="success">
-				      <th scope="row">009</th>
-				      <td>Nombre</td>
-				      <td>$50,00</td>
-				      <td>Denisse Quishpe</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">010</th>
-				      <td>Nombre</td>
-				      <td>$60,00</td>
-				      <td>Daniela Guaranda</td>
-				    </tr>
-				    <tr class="success">
-				      <th scope="row">011</th>
-				      <td>Nombre</td>
-				      <td>$20,00</td>
-				      <td>Maria Meza</td>
+				    <tr *ngFor="let articulo of articulos">
+				      <th scope="row" >{{articulo.id}}</th>
+				      <td>{{articulo.nombre}}</td>
+				      <td>${{articulo.precio}}</td>
+				      <td>{{articulo.usuario.first_name}} {{articulo.usuario.last_name}}</td>
 				    </tr>
 				  </tbody>
 			</table>
