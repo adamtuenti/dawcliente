@@ -10,70 +10,20 @@
 				  <thead>
 				    <tr>
 				      <th scope="col">Código</th>
-				      <th scope="col">Vendedor</th>
-				      <th scope="col">Nombre Producto</th>
-				      <th scope="col">Precio</th>
 				      <th scope="col">Comprador</th>
+				      <th scope="col">Fecha</th>
+				      <th scope="col">Cantidad Articulos</th>
+				      <th scope="col">Total</th>
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr class="success">
-				      <th scope="row" >001</th>
-				      <td>Maria Meza</td> 
-				      <td>Nombre</td>
-				      <td>$20,00</td>
-				      <td>Fabrizio GC</td>
+				    <tr *ngFor="let pago of pagos">
+				      <th scope="row" >{{pago.id}}</th>
+				      <td>{{pago.pedido.comprador.first_name}} {{pago.pedido.comprador.last_name}}</td> 
+				      <td>{{pago.fecha_pago}}</td>
+				      <td>{{pago.pedido.articulos.length}}</td>
+				      <td>$ {{pago.pedido.total_venta}}</td>
 				    </tr>
-				    <tr>
-				      <th scope="row">002</th>
-				      <td>Axel Tuarez</td>
-				      <td>Nombre</td>
-				      <td>$40,00</td>
-				      <td>Ignacio Flores</td>
-				    </tr>
-				    <tr class="success">
-				      <th scope="row">003</th>
-				      <td>Julio Aguirre</td>
-				      <td>Zapatos de Cuero</td>
-				      <td>$25,00</td>
-				      <td>Marlee Pinargote</td>
-				    </tr>
-				    <tr >
-				      <th scope="row">004</th>
-				      <td>Valeria Baek</td>
-				      <td>Nombre</td>
-				      <td>$5,00</td>
-				      <td>Alejandra Mondragon</td>
-				    </tr>
-				    <tr class="success">
-				      <th scope="row">005</th>
-				      <td>Justin Chilan</td>
-				      <td>Nombre</td>
-				      <td>$12,00</td>
-				      <td>Kevin Aguilar</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">006</th>
-				      <td>Claudia Zambrano</td>
-				      <td>Nombre</td>
-				      <td>$45,00</td>
-				      <td>Geovanny Suarez</td>
-				    </tr>
-				    <tr class="success">
-				      <th scope="row">007</th>
-				      <td>Rodrigo Dominguez</td>
-				      <td>Nombre</td>
-				      <td>$30,00</td>
-				      <td>Luis Corozo</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">008</th>
-				      <td>Denisse Quishpe</td>
-				      <td>Nombre</td>
-				      <td>$50,00</td>
-				      <td>Marlee Pinargote</td>
-				    </tr>
-
 				  </tbody>
 			</table>
 

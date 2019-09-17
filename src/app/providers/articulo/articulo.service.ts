@@ -79,4 +79,8 @@ export class ArticuloService {
     return this.http.get(this.apiUrl+"api/carrito/" + id + "/");
   }
 
+  getPagos() {
+    return this.http.get(this.apiUrl + 'api/pago/')
+  }
+
 }
