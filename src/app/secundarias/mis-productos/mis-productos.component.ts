@@ -85,4 +85,14 @@ export class MisProductosComponent implements OnInit {
     this.navCtrl.navigate('actualizar_articulo', {articulo:articulo});
   }
 
+  pedirCarrito() {
+    this.articuloServicio.pedirCarrito(localStorage.getItem('id_usuario')).subscribe(
+      data => {
+        console.log(data);
+        window.location.reload();
+      },
+      error => console.log(error)
+    );
+  }
+
 }

@@ -102,4 +102,8 @@ export class ArticuloService {
     return this.http.post(this.apiUrl + 'api/dislike/' + pk + '/', request);
   }
 
+  pedirCarrito(pk) {
+    return this.http.post(this.apiUrl + 'api/pedircarrito/' + pk + '/', {});
+  }
+
 }
