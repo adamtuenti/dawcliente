@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { ArticuloService } from './providers/articulo/articulo.service';
+import { ExcelService } from './providers/articulo/excel.service';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -72,7 +73,8 @@ const rutas: Routes = [
   providers:    [ 
     ArticuloService,
     NgxNavigationWithDataComponent, 
-    DataService
+    DataService,
+    ExcelService
   ],
   imports:      [ 
     BrowserModule, 

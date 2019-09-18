@@ -1,13 +1,14 @@
 
 	<section>
 		<h1>Productos en Venta</h1>
-		<div id="listado_productos" class="table-resaponsive">
+		<div id="exportable" class="table-resaponsive">
 			<table class="table table-striped table-hover table-bordered">
 				  <thead>
 				    <tr>
 				      <th scope="col">Código</th>
 				      <th scope="col">Nombre Producto</th>
 				      <th scope="col">Precio</th>
+				      <th scope="col">Categoria</th>
 				      <th scope="col">Vendedor</th>
 				    </tr>
 				  </thead>
@@ -16,11 +17,12 @@
 				      <th scope="row" >{{articulo.id}}</th>
 				      <td>{{articulo.nombre}}</td>
 				      <td>${{articulo.precio}}</td>
+				      <td>{{articulo.categoria.nombre}}</td>
 				      <td>{{articulo.usuario.first_name}} {{articulo.usuario.last_name}}</td>
 				    </tr>
 				  </tbody>
 			</table>
-
+			<button class="btn btn-success btn block" block="true" (click)="saveFile()">Descargar XLSX</button>
 		</div>
 		<a routerLink="/panel-control"><img src="https://github.com/AngelJumbo/DAW_BuyAndHelp/blob/master/bootstrap-shop/administrador/html/themes/images/administrador/back_button.png?raw=true" id="back_button" alt="boton de retroceso"></a>
 	</section>
