@@ -94,4 +94,12 @@ export class ArticuloService {
     return this.http.get(this.apiUrl + 'api/estadisticasarticuloscategorias/');
   }
 
+  like(request, pk){
+    return this.http.post(this.apiUrl + 'api/like/' + pk + '/', request);
+  }
+  
+  dislike(request, pk){
+    return this.http.post(this.apiUrl + 'api/dislike/' + pk + '/', request);
+  }
+
 }

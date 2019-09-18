@@ -12,6 +12,7 @@ export class MainComponent implements OnInit {
   
   urlweb ='http://127.0.0.1:8000';
   articulos=null;
+  rol = localStorage.getItem('rol');
 
   constructor( private articuloServicio: ArticuloService) { 
     
@@ -21,10 +22,12 @@ export class MainComponent implements OnInit {
     this.GetData();
     
     console.log("entra en on init");
+    console.log('rol', this.rol);
     
   }
 
   GetData() {
+    this.articulos = [];
     this.articuloServicio.getArticulos()
       .subscribe(data => {
         this.articulos = data;
@@ -54,5 +57,33 @@ export class MainComponent implements OnInit {
       }, (error) => console.log(error)
     );
   } 
+
+  like(articulo) {
+    this.articuloServicio.like({'user': +localStorage.getItem('id_usuario')}, articulo.id).subscribe(
+      data => {
+        this.GetData();
+      },
+      error => alert(error)
+    );
+  }
+
+  likedBy(articulo) {
+    for (let i = 0; i < articulo.liked_by.length; i++) {
+      if (articulo.liked_by[i]['id'] === +localStorage.getItem('id_usuario')){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  dislike(articulo) {
+    this.articuloServicio.dislike({'user': +localStorage.getItem('id_usuario')}, articulo.id).subscribe(
+      data => {
+        this.GetData();
+      },
+      error => console.log(error)
+    );
+  }
+
 
 }

@@ -17,7 +17,7 @@ export class ArticulosFiltradosComponent implements AfterViewInit  {
   articulos2 = [];
   categoria = '';
   message: string;
-
+  rol = localStorage.getItem('rol');
   mySubscription: any;
 
   constructor(private articuloServicio: ArticuloService, 
@@ -36,16 +36,15 @@ export class ArticulosFiltradosComponent implements AfterViewInit  {
   }
 
   ngAfterViewInit() {
-    this.data.currentMessage.subscribe(message => this.categoria = message)
-    console.log("recibido="+this.categoria);
+    this.data.currentMessage.subscribe(message => this.categoria = message);
     this.GetData();  
   }
 
   GetData() {
     this.articuloServicio.getArticulos()
       .subscribe(data => {
+        this.articulos = [];
         this.articulos2 = data;
-        console.log(this.articulos);
         this.addurl();
         if (this.categoria !== '') {
           for(let articulo of this.articulos2){
@@ -100,6 +99,33 @@ export class ArticulosFiltradosComponent implements AfterViewInit  {
     if (this.mySubscription) {
       this.mySubscription.unsubscribe();
     }
+  }
+
+  like(articulo) {
+    this.articuloServicio.like({'user': +localStorage.getItem('id_usuario')}, articulo.id).subscribe(
+      data => {
+        this.GetData();
+      },
+      error => alert(error)
+    );
+  }
+
+  likedBy(articulo) {
+    for (let i = 0; i < articulo.liked_by.length; i++) {
+      if (articulo.liked_by[i]['id'] === +localStorage.getItem('id_usuario')){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  dislike(articulo) {
+    this.articuloServicio.dislike({'user': +localStorage.getItem('id_usuario')}, articulo.id).subscribe(
+      data => {
+        this.GetData();
+      },
+      error => console.log(error)
+    );
   }
 
 }

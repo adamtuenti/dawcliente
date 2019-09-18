@@ -10,8 +10,10 @@
                 <h3 class='nombreArt'>{{articulo?.nombre}}</h3>
                 <p class="price">$ {{articulo?.precio}}</p>
                 <p class="price">{{articulo?.donacion}} %</p>
-                                
-                <button class="btn btn-success" (click)="probar(articulo)">Add to Cart</button>
-                                    
+                <p class="price">{{articulo?.likes}} likes ♥</p> 
+                <button class="btn btn-success" (click)="like(articulo)" *ngIf="!likedBy(articulo) && rol">Like</button>
+                <button class="btn btn-success" (click)="dislike(articulo)" *ngIf="likedBy(articulo)">Dislike</button>         
+
+                <button class="btn btn-success" (click)="probar(articulo)" *ngIf="rol==='COM'">Add to Cart</button>
         </div>
 </div>  
