@@ -35,7 +35,7 @@ export class ContactComponent implements OnInit {
       //headers.append('X-CSRFToken', csrftoken);
       
       $.ajax({
-        url: 'http://localhost:8000/contact', 
+        url: 'http://localhost:8000/contact/', 
         data: data,
         dataType: 'json',
         method: 'POST',
