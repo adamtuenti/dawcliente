@@ -22,7 +22,7 @@ export class ListaVentasComponent implements OnInit {
   }
 
   getPagos() {
-    this.articuloServicio.getPagos().subscribe(
+    this.articuloServicio.getPedidos().subscribe(
       data => {
         this.pagos = data;
         console.log(data);
@@ -35,10 +35,10 @@ export class ListaVentasComponent implements OnInit {
     for (let i = 0; i < this.pagos.length; i++) {
       let obj = {
         'codigo': this.pagos[i].id,
-        'comprador': this.pagos[i].pedido.comprador.first_name + this.pagos[i].pedido.comprador.last_name,
-        'fecha': this.pagos[i].fecha_pago,
-        'cantidad_articulos': this.pagos[i].pedido.articulos.length,
-        'total_venta': this.pagos[i].pedido.total_venta,
+        'comprador': this.pagos[i].comprador.first_name + this.pagos[i].comprador.last_name,
+        'fecha': this.pagos[i].fecha,
+        'cantidad_articulos': this.pagos[i].articulos.length,
+        'total_venta': this.pagos[i].total_venta,
       }
       datos_exportables.push(obj);
     }

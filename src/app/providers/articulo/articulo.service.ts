@@ -106,4 +106,8 @@ export class ArticuloService {
     return this.http.post(this.apiUrl + 'api/pedircarrito/' + pk + '/', {});
   }
 
+  getPedidos() {
+    return this.http.get(this.apiUrl + 'api/pedidos/');
+  }
+
 }
